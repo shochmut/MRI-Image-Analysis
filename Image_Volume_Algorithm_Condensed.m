@@ -21,9 +21,9 @@ addpath(genpath('.'));
 
 %% Now we load the image file (image stack containing multiple slice images)
 % that is in tif format
-ImgStack = '19_Standing_L2L3.tif';                  % set up file name
+% ImgStack = '19_Standing_L2L3.tif';                  % set up file name
 % ImgStack = '14_Standing_L5S.tif';
-% ImgStack = '14_Standing_L2L3.tif';
+ImgStack = '14_Standing_L2L3.tif';
 t = Tiff(ImgStack,'r');                             % open and read tif file
 
 
@@ -88,7 +88,7 @@ close all                                           % close images
 
 
 %% Set up initial tolerance for seed algorithm
-tol = 0.4;
+tol = 0.2;
 
 %% Run the seed growing algorithm on initial image
 [final, colored, pouthisteq] = Image_Analysis_Fxn(InitImg,x,y,tol); % run image analysis fxn and store final images
@@ -195,19 +195,22 @@ for i = 1:stacklength
         close
         continue
     end
-    if tol == 0
-        
-        continue
-    end
+%     if tol <= 0
+%         x(i) = 0; 
+%         y(i) = 0; 
+%         continue
+%     end
     ClearBord(:,:,i) = imclearborder(disc(:,:,i));             % if disc touches border clear
     true = find(ClearBord(:,:,i));                      % find images that have been cleared
     if isempty(true) == 1
-        tol = tol - 0.1;
-        [final, colored, pouthisteq] = Image_Analysis_Fxn(A(:,:,i),x(i),y(i),tol);   % run image analysis fxn and store final images
-        disc(:,:,i) = final;                       % store analysis for each slice
-        J(:,:,:,i) = colored;                    % store labeloverlay for each slice
-        
-    end 
+        tol = 0.4
+        for j = 20:1
+            tol = tol - (tol/j);
+            [final, colored, pouthisteq] = Image_Analysis_Fxn(A(:,:,i),x(i),y(i),tol);   % run image analysis fxn and store final images
+            disc(:,:,i) = final;                       % store analysis for each slice
+            J(:,:,:,i) = colored;                    % store labeloverlay for each slice
+        end 
+    end
 end
 
 
@@ -249,11 +252,12 @@ for i = 1:stacklength;
     ImgComp(:,:,:,i) = labeloverlay(A(:,:,i),disc(:,:,i));
     figure;
     imshow(ImgComp(:,:,:,i));
+    hold on
+    plot(x(i),y(i),'+','MarkerFaceColor','red')
+
     F(i) = getframe;
     ImgComp(:,:,:,i)=F.cdata;
     ImgComp(:,:,:,i) = frame2im(F(i));
-    hold on
-    plot(x(i),y(i),'+','MarkerFaceColor','red')
     close
 end
 figure
