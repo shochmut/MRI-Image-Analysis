@@ -5,7 +5,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % This Matlab file converts the pixelated MRI images into a coordinate    %
-% system. Images are then analyzed using a peak analysis method to find   % 
+% system. Images are then analyzed using a region growing method to find  % 
 % the pixels that contain the nucleus pulposus (white) contained within   %
 % the annulus fibrosis (black)                                            %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
