@@ -71,6 +71,14 @@ end
 % montage({A(:,:,13),A_bilatfilt(:,:,13),A_sharp1(:,:,13),A_histeq(:,:,13),sharp2(:,:,13)},'Size',[1 5])   % display the 3 images    
 
 
+%% Save whole images as single stack
+    fid = fopen(strcat('finalnosegment','_',ImgStack,'_',num2str(i),'.raw'),'wt');
+    finalslice = fwrite(fid,A,'uint8');
+    fclose(fid);
+%     finalfile = strcat('FinalSlice','_', num2str(i),'_', ImgStack, '.tif');
+%     imwrite(finaldisc(:,:,i),finalfile);
+
+
 %% Use a GUI to determine disc border slices
 figure
 x = []; y = [];                                     % preallocate empty points
@@ -112,7 +120,7 @@ x = []; y = [];                                     % preallocate empty points
 imshow(InitImg);
 text(0,-10,'Double click on seed point')
 text(0,-5,'If no visible seed point press enter')
-[x,y] = getpts;                             % get seed point
+[x,y] = getpts;                                     % get seed point
 x = round(x);                                       % round seed point
 y = round(y);
 close all                                           % close images
@@ -409,16 +417,13 @@ title('Seed Analysis Overlayed with Original Raw Image')
 
 
 %% Export segmented images into a .tif file
-
-% Here we reformat the isolated disc into uint8 image format
-for i = 1:stacklength
-    discnew(:,:,i)=im2uint8(disc(:,:,i));
-end
+finaldisc = A;
+finaldisc(~disc) = 0;
 
 finalfile = append('FinalDisc','_',ImgStack);
-imwrite(discnew(:,:,1),finalfile);
+imwrite(finaldisc(:,:,1),finalfile);
 for i = 2:stacklength
-    imwrite(discnew(:,:,i),finalfile,'WriteMode','append','Compression','none');
+    imwrite(finaldisc(:,:,i),finalfile,'WriteMode','append','Compression','none');
 end
 
 %% Here we write the overlay image into a .tif file
@@ -434,18 +439,68 @@ end
 
 
 %% Generate a randomized stress map 
-low = 1;
-high = 1000;
-random = rand(size(discnew));
-StressMap = (high-low).*rand(size(discnew)) + low;
+
+% low = 1;
+% high = 1000;
+% random = rand(size(discnew));
+% StressMap = (high-low).*rand(size(discnew)) + low;
 
 
 %% Multiply stress map by isolated disc to get stress map of disc only
-StressMapDisc = StressMap.*(disc);
+% StressMapDisc = StressMap.*(disc);
 
 
 %% Open volume viewer app with stress map of disc
-volumeViewer(StressMapDisc)
+volumeViewer(finaldisc)
+
+
+%% Save stack of images as separate slices to be imported into photoshop
+%  and converted into .raw files
+mkdir(strcat('final','_',ImgStack));                               %create destination folder
+for i=1:stacklength
+    fid = fopen(strcat('finalslice','_',ImgStack,'_',num2str(i),'.raw'),'wt');
+    finalslice = fwrite(fid,finaldisc(:,:,i),'uint8');
+    fclose(fid);
+%     finalfile = strcat('FinalSlice','_', num2str(i),'_', ImgStack, '.tif');
+%     imwrite(finaldisc(:,:,i),finalfile);
+end
+
+
+%% Try exporting the image stack as a 3d .raw file for input into FEBio
+fid = fopen(strcat('finalraw','_',ImgStack,'.raw'),'wt');
+finalraw = fwrite(fid,finaldisc,'uint8');
+fclose(fid);
+
+
+%%
+
+A = readmatrix('C:\Users\shochmut\Desktop\FEWarp\FEWarp\examples\ScriptRunStressFieldOutput');
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%               %%%%%%%%%%%%   %%%%%%%%%%%%%    %%%%%%%%%%%%%%            %
+%               %              %                %           %             %
+%               %              %                %          %              %
+%               %%%%%%%%%      %%%%%%%%%%       %%%%%%%%%%%     io        %
+%               %              %                %          %              %
+%               %              %                %           %             %
+%               %              %%%%%%%%%%%%%    %%%%%%%%%%%%%%            %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% First we set the FEBio Path
+FEBioPath=getFEBioPath;
+
+%% Change the E and V values of the FEBio input file
+
+
+
+
+
+
 
 
 
