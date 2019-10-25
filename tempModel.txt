@@ -1,0 +1,3370 @@
+===========================================================================
+         ________    _________   _________     __     _________            
+        |        |\ |        |\ |        |\   |  |\  /         \\          
+        |    ____|| |    ____|| |    __  ||   |__|| |    ___    ||         
+        |   |\___\| |   |\___\| |   |\_| ||    \_\| |   //  \   ||         
+        |   ||      |   ||      |   || | ||    __   |  ||    |  ||         
+        |   ||__    |   ||__    |   ||_| ||   |  |\ |  ||    |  ||         
+        |       |\  |       |\  |         \\  |  || |  ||    |  ||         
+        |    ___||  |    ___||  |    ___   || |  || |  ||    |  ||         
+        |   |\__\|  |   |\__\|  |   |\__|  || |  || |  ||    |  ||         
+        |   ||      |   ||      |   ||  |  || |  || |  ||    |  ||         
+        |   ||      |   ||___   |   ||__|  || |  || |   \\__/   ||         
+        |   ||      |        |\ |          || |  || |           ||         
+        |___||      |________|| |__________|| |__||  \_________//          
+                                                                           
+      F I N I T E   E L E M E N T S   F O R   B I O M E C H A N I C S      
+                                                                           
+                 --- v e r s i o n - 2 . 9 . 0 ---                 
+                                                                           
+                                                                           
+  http://febio.org                                                         
+  FEBio is a registered trademark.                                         
+  copyright (c) 2006-2019 - All rights reserved                            
+                                                                           
+===========================================================================
+
+
+Cube analysis
+
+ FILES USED
+===========================================================================
+	Input file : C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel.feb
+	Plot file  : C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel.xplt
+	Log file   : C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel.txt
+
+
+ MESH INFO
+===========================================================================
+	Number of materials ............................ : 1
+	Number of domains .............................. : 1
+	Number of nodes ................................ : 54621
+	Number of solid elements ....................... : 50000
+
+
+ CONTROL DATA
+===========================================================================
+	Module type .................................... : solid
+	Analysis type .................................. : quasi-static
+	Number of timesteps ............................ : 10
+	Time step size ................................. : 0.1
+	Auto time stepper activated .................... : yes
+	  Optimal nr of iterations ..................... : 6
+	  Minimum allowable step size .................. : 0.001
+	  Maximum allowable step size .................. : 0.1
+	Number of loadcurves ........................... : 2
+
+
+ SOLVER PARAMETERS
+===========================================================================
+	symmetric_stiffness ............................... : true
+	lstol ............................................. : 0.9
+	lsmin ............................................. : 0.01
+	lsiter ............................................ : 5
+	max_refs .......................................... : 25
+	max_ups ........................................... : 0
+	qn_max_buffer_size ................................ : 0
+	qn_cycle_buffer ................................... : true
+	cmax .............................................. : 100000
+	qnmethod .......................................... : 0
+	check_zero_diagonal ............................... : true
+	zero_diagonal_tol ................................. : 0
+	equation_scheme ................................... : 0
+	force_partition ................................... : 0
+	reform_each_time_step ............................. : true
+	diverge_reform .................................... : true
+	do_reforms ........................................ : true
+	dtol .............................................. : 0.001
+	etol .............................................. : 0.01
+	rtol .............................................. : 1
+	min_residual ...................................... : 1e-020
+	max_residual ...................................... : 0
+	rhoi .............................................. : -2
+	alpha ............................................. : 1
+	beta .............................................. : 0.25
+	gamma ............................................. : 0.5
+	logSolve .......................................... : false
+
+
+ OUTPUT DATA
+===========================================================================
+	plot level ................................ : major iterations
+	plotfile format ........................... : FEBIO
+		Nodal Variables:
+			displacement         (type = vec3f, format = NODE)
+			warp-template        (type = float, format = NODE)
+			warp-target          (type = float, format = NODE)
+			warp-force           (type = vec3f, format = NODE)
+		Domain Variables:
+			stress               (type = mat3fs, format = ITEM)
+
+
+ MATERIAL DATA
+===========================================================================
+  1 - unknown (type: neo-Hookean)
+	density ........................................... : 1
+	E ................................................. : 0.1
+	v ................................................. : 0.4
+
+
+ NONLINEAR CONSTRAINT DATA
+===========================================================================
+
+
+ LINEAR SOLVER DATA
+===========================================================================
+	Solver type ............................... : Pardiso
+	Matrix format ............................. : symmetric
+
+
+
+===== beginning time step 1 : 0.1 =====
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 1
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 2
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   7.117833e-018   8.959276e-010 
+	   energy             6.574499e-009   2.064399e-013   6.574499e-011 
+	   displacement       8.638992e-008   8.638992e-008   8.638992e-014 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 2
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 3
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   3.328638e-025   8.959276e-010 
+	   energy             6.574499e-009   2.259511e-022   6.574499e-011 
+	   displacement       8.638992e-008   9.570105e-017   8.639399e-014 
+
+........................ augmentation # 1
+warping norm: 1 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 3
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 5
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   7.117817e-018   8.959276e-010 
+	   energy             6.574499e-009   2.064382e-013   6.574499e-011 
+	   displacement       8.638992e-008   8.639046e-008   3.455689e-013 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 4
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 6
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   3.306335e-025   8.959276e-010 
+	   energy             6.574499e-009   2.267961e-022   6.574499e-011 
+	   displacement       8.638992e-008   9.570303e-017   3.455771e-013 
+
+........................ augmentation # 2
+warping norm: 0.749996 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 5
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 8
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   7.117803e-018   8.959276e-010 
+	   energy             6.574499e-009   2.064365e-013   6.574499e-011 
+	   displacement       8.638992e-008   8.639100e-008   7.775386e-013 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 6
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 9
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   3.328457e-025   8.959276e-010 
+	   energy             6.574499e-009   2.268543e-022   6.574499e-011 
+	   displacement       8.638992e-008   9.570497e-017   7.775508e-013 
+
+........................ augmentation # 3
+warping norm: 0.555549 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 7
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 11
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   7.117787e-018   8.959276e-010 
+	   energy             6.574499e-009   2.064348e-013   6.574499e-011 
+	   displacement       8.638992e-008   8.639154e-008   1.382301e-012 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 8
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 12
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   3.363277e-025   8.959276e-010 
+	   energy             6.574499e-009   2.256159e-022   6.574499e-011 
+	   displacement       8.638992e-008   9.570706e-017   1.382317e-012 
+
+........................ augmentation # 4
+warping norm: 0.437492 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 9
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 14
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   7.117772e-018   8.959276e-010 
+	   energy             6.574499e-009   2.064331e-013   6.574499e-011 
+	   displacement       8.638992e-008   8.639208e-008   2.159857e-012 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 10
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 15
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   3.333132e-025   8.959276e-010 
+	   energy             6.574499e-009   2.269078e-022   6.574499e-011 
+	   displacement       8.638992e-008   9.570891e-017   2.159877e-012 
+
+........................ augmentation # 5
+warping norm: 0.359991 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 11
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 17
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   7.117755e-018   8.959276e-010 
+	   energy             6.574499e-009   2.064314e-013   6.574499e-011 
+	   displacement       8.638992e-008   8.639262e-008   3.110208e-012 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 12
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 18
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   3.317489e-025   8.959276e-010 
+	   energy             6.574499e-009   2.269410e-022   6.574499e-011 
+	   displacement       8.638992e-008   9.571099e-017   3.110232e-012 
+
+........................ augmentation # 6
+warping norm: 0.305545 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 13
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 20
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   7.117742e-018   8.959276e-010 
+	   energy             6.574499e-009   2.064297e-013   6.574499e-011 
+	   displacement       8.638992e-008   8.639316e-008   4.233357e-012 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 14
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 21
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   3.375786e-025   8.959276e-010 
+	   energy             6.574499e-009   2.279208e-022   6.574499e-011 
+	   displacement       8.638992e-008   9.571284e-017   4.233385e-012 
+
+........................ augmentation # 7
+warping norm: 0.265295 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 15
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 23
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   7.117727e-018   8.959276e-010 
+	   energy             6.574499e-009   2.064279e-013   6.574499e-011 
+	   displacement       8.638992e-008   8.639371e-008   5.529304e-012 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 16
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 24
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   3.357434e-025   8.959276e-010 
+	   energy             6.574499e-009   2.273299e-022   6.574499e-011 
+	   displacement       8.638992e-008   9.571473e-017   5.529337e-012 
+
+........................ augmentation # 8
+warping norm: 0.234364 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 17
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 26
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   7.117711e-018   8.959276e-010 
+	   energy             6.574499e-009   2.064263e-013   6.574499e-011 
+	   displacement       8.638992e-008   8.639425e-008   6.998052e-012 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 18
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 27
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   3.329203e-025   8.959276e-010 
+	   energy             6.574499e-009   2.265376e-022   6.574499e-011 
+	   displacement       8.638992e-008   9.571685e-017   6.998089e-012 
+
+........................ augmentation # 9
+warping norm: 0.209865 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 19
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 29
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   7.117694e-018   8.959276e-010 
+	   energy             6.574499e-009   2.064245e-013   6.574499e-011 
+	   displacement       8.638992e-008   8.639479e-008   8.639602e-012 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 20
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 30
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   3.359846e-025   8.959276e-010 
+	   energy             6.574499e-009   2.273847e-022   6.574499e-011 
+	   displacement       8.638992e-008   9.571873e-017   8.639643e-012 
+
+........................ augmentation # 10
+warping norm: 0.189988 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 21
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 32
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   7.117680e-018   8.959276e-010 
+	   energy             6.574499e-009   2.064229e-013   6.574499e-011 
+	   displacement       8.638992e-008   8.639533e-008   1.045396e-011 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 22
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 33
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   3.393687e-025   8.959276e-010 
+	   energy             6.574499e-009   2.257096e-022   6.574499e-011 
+	   displacement       8.638992e-008   9.572075e-017   1.045400e-011 
+
+........................ augmentation # 11
+warping norm: 0.173542 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 23
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 35
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   7.117662e-018   8.959276e-010 
+	   energy             6.574499e-009   2.064211e-013   6.574499e-011 
+	   displacement       8.638992e-008   8.639587e-008   1.244111e-011 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 24
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 36
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   3.348093e-025   8.959276e-010 
+	   energy             6.574499e-009   2.260818e-022   6.574499e-011 
+	   displacement       8.638992e-008   9.572271e-017   1.244116e-011 
+
+........................ augmentation # 12
+warping norm: 0.15971 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 25
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 38
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   7.117646e-018   8.959276e-010 
+	   energy             6.574499e-009   2.064194e-013   6.574499e-011 
+	   displacement       8.638992e-008   8.639641e-008   1.460108e-011 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 26
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 39
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   3.343849e-025   8.959276e-010 
+	   energy             6.574499e-009   2.268443e-022   6.574499e-011 
+	   displacement       8.638992e-008   9.572462e-017   1.460113e-011 
+
+........................ augmentation # 13
+warping norm: 0.147916 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 27
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 41
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   7.117631e-018   8.959276e-010 
+	   energy             6.574499e-009   2.064177e-013   6.574499e-011 
+	   displacement       8.638992e-008   8.639695e-008   1.693385e-011 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 28
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 42
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   3.282817e-025   8.959276e-010 
+	   energy             6.574499e-009   2.266391e-022   6.574499e-011 
+	   displacement       8.638992e-008   9.572659e-017   1.693391e-011 
+
+........................ augmentation # 14
+warping norm: 0.137742 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 29
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 44
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   7.117614e-018   8.959276e-010 
+	   energy             6.574499e-009   2.064160e-013   6.574499e-011 
+	   displacement       8.638992e-008   8.639749e-008   1.943944e-011 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 30
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 45
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   3.353805e-025   8.959276e-010 
+	   energy             6.574499e-009   2.263538e-022   6.574499e-011 
+	   displacement       8.638992e-008   9.572863e-017   1.943950e-011 
+
+........................ augmentation # 15
+warping norm: 0.128876 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 31
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 47
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   7.117596e-018   8.959276e-010 
+	   energy             6.574499e-009   2.064143e-013   6.574499e-011 
+	   displacement       8.638992e-008   8.639803e-008   2.211784e-011 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 32
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 48
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   3.346512e-025   8.959276e-010 
+	   energy             6.574499e-009   2.271040e-022   6.574499e-011 
+	   displacement       8.638992e-008   9.573063e-017   2.211790e-011 
+
+........................ augmentation # 16
+warping norm: 0.121081 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 33
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 50
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   7.117578e-018   8.959276e-010 
+	   energy             6.574499e-009   2.064125e-013   6.574499e-011 
+	   displacement       8.638992e-008   8.639857e-008   2.496905e-011 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 34
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 51
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   3.355627e-025   8.959276e-010 
+	   energy             6.574499e-009   2.277922e-022   6.574499e-011 
+	   displacement       8.638992e-008   9.573239e-017   2.496911e-011 
+
+........................ augmentation # 17
+warping norm: 0.114174 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 35
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 53
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   7.117564e-018   8.959276e-010 
+	   energy             6.574499e-009   2.064109e-013   6.574499e-011 
+	   displacement       8.638992e-008   8.639911e-008   2.799307e-011 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 36
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 54
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   3.358754e-025   8.959276e-010 
+	   energy             6.574499e-009   2.264137e-022   6.574499e-011 
+	   displacement       8.638992e-008   9.573449e-017   2.799314e-011 
+
+........................ augmentation # 18
+warping norm: 0.108012 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 37
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 56
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   7.117547e-018   8.959276e-010 
+	   energy             6.574499e-009   2.064091e-013   6.574499e-011 
+	   displacement       8.638992e-008   8.639965e-008   3.118991e-011 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 38
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 57
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   3.316975e-025   8.959276e-010 
+	   energy             6.574499e-009   2.272264e-022   6.574499e-011 
+	   displacement       8.638992e-008   9.573631e-017   3.118999e-011 
+
+........................ augmentation # 19
+warping norm: 0.10248 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 39
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 59
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   7.117529e-018   8.959276e-010 
+	   energy             6.574499e-009   2.064074e-013   6.574499e-011 
+	   displacement       8.638992e-008   8.640019e-008   3.455957e-011 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 40
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 60
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.959276e-010   3.309885e-025   8.959276e-010 
+	   energy             6.574499e-009   2.265848e-022   6.574499e-011 
+	   displacement       8.638992e-008   9.573824e-017   3.455965e-011 
+
+........................ augmentation # 20
+warping norm: 0.0974867 0.1
+
+convergence summary
+    number of iterations   : 40
+    number of reformations : 0
+
+------- converged at time : 0.1
+
+
+Data Record #1
+===========================================================================
+Step = 1
+Time = 0.1
+Data = ux;uy;uz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_disp_out.txt
+
+Data Record #2
+===========================================================================
+Step = 1
+Time = 0.1
+Data = sz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_stress_out.txt
+
+Data Record #3
+===========================================================================
+Step = 1
+Time = 0.1
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptemplate_out.txt
+
+Data Record #4
+===========================================================================
+Step = 1
+Time = 0.1
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptarget_out.txt
+
+Data Record #5
+===========================================================================
+Step = 1
+Time = 0.1
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpenergy_out.txt
+
+Data Record #6
+===========================================================================
+Step = 1
+Time = 0.1
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpforce_out.txt
+
+AUTO STEPPER: decreasing time step, dt = 0.0393425
+
+
+===== beginning time step 2 : 0.139343 =====
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 1
+ Nonlinear solution status: time= 0.139343
+	stiffness updates             = 0
+	right hand side evaluations   = 2
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           3.309885e-025   3.288544e-025   3.309885e-025 
+	   energy             3.154406e-025   1.599738e-025   3.154406e-027 
+	   displacement       8.005423e-025   8.005423e-025   8.005423e-031 
+ *************************************************************************
+ *                               WARNING                                 *
+ *                                                                       *
+ * No force acting on the system.                                        *
+ *************************************************************************
+
+........................ augmentation # 1
+warping norm: 0.0974867 0.1
+
+convergence summary
+    number of iterations   : 1
+    number of reformations : 0
+
+------- converged at time : 0.139343
+
+
+Data Record #1
+===========================================================================
+Step = 2
+Time = 0.139342535
+Data = ux;uy;uz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_disp_out.txt
+
+Data Record #2
+===========================================================================
+Step = 2
+Time = 0.139342535
+Data = sz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_stress_out.txt
+
+Data Record #3
+===========================================================================
+Step = 2
+Time = 0.139342535
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptemplate_out.txt
+
+Data Record #4
+===========================================================================
+Step = 2
+Time = 0.139342535
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptarget_out.txt
+
+Data Record #5
+===========================================================================
+Step = 2
+Time = 0.139342535
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpenergy_out.txt
+
+Data Record #6
+===========================================================================
+Step = 2
+Time = 0.139342535
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpforce_out.txt
+
+AUTO STEPPER: increasing time step, dt = 0.051474
+
+
+===== beginning time step 3 : 0.190817 =====
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 1
+ Nonlinear solution status: time= 0.190817
+	stiffness updates             = 0
+	right hand side evaluations   = 2
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           3.288544e-025   3.250786e-025   3.288544e-025 
+	   energy             3.062489e-025   1.605779e-025   3.062489e-027 
+	   displacement       7.097332e-025   7.097332e-025   7.097332e-031 
+ *************************************************************************
+ *                               WARNING                                 *
+ *                                                                       *
+ * No force acting on the system.                                        *
+ *************************************************************************
+
+........................ augmentation # 1
+warping norm: 0.0974867 0.1
+
+convergence summary
+    number of iterations   : 1
+    number of reformations : 0
+
+------- converged at time : 0.190817
+
+
+Data Record #1
+===========================================================================
+Step = 3
+Time = 0.190816563
+Data = ux;uy;uz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_disp_out.txt
+
+Data Record #2
+===========================================================================
+Step = 3
+Time = 0.190816563
+Data = sz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_stress_out.txt
+
+Data Record #3
+===========================================================================
+Step = 3
+Time = 0.190816563
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptemplate_out.txt
+
+Data Record #4
+===========================================================================
+Step = 3
+Time = 0.190816563
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptarget_out.txt
+
+Data Record #5
+===========================================================================
+Step = 3
+Time = 0.190816563
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpenergy_out.txt
+
+Data Record #6
+===========================================================================
+Step = 3
+Time = 0.190816563
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpforce_out.txt
+
+AUTO STEPPER: increasing time step, dt = 0.0611792
+
+
+===== beginning time step 4 : 0.251996 =====
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 1
+ Nonlinear solution status: time= 0.251996
+	stiffness updates             = 0
+	right hand side evaluations   = 2
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           3.250786e-025   3.249953e-025   3.250786e-025 
+	   energy             3.019021e-025   1.583364e-025   3.019021e-027 
+	   displacement       6.982091e-025   6.982091e-025   6.982091e-031 
+ *************************************************************************
+ *                               WARNING                                 *
+ *                                                                       *
+ * No force acting on the system.                                        *
+ *************************************************************************
+
+........................ augmentation # 1
+warping norm: 0.0974867 0.1
+
+convergence summary
+    number of iterations   : 1
+    number of reformations : 0
+
+------- converged at time : 0.251996
+
+
+Data Record #1
+===========================================================================
+Step = 4
+Time = 0.251995786
+Data = ux;uy;uz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_disp_out.txt
+
+Data Record #2
+===========================================================================
+Step = 4
+Time = 0.251995786
+Data = sz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_stress_out.txt
+
+Data Record #3
+===========================================================================
+Step = 4
+Time = 0.251995786
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptemplate_out.txt
+
+Data Record #4
+===========================================================================
+Step = 4
+Time = 0.251995786
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptarget_out.txt
+
+Data Record #5
+===========================================================================
+Step = 4
+Time = 0.251995786
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpenergy_out.txt
+
+Data Record #6
+===========================================================================
+Step = 4
+Time = 0.251995786
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpforce_out.txt
+
+AUTO STEPPER: increasing time step, dt = 0.0689434
+
+
+===== beginning time step 5 : 0.320939 =====
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 1
+ Nonlinear solution status: time= 0.320939
+	stiffness updates             = 0
+	right hand side evaluations   = 2
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           3.249953e-025   3.356827e-025   3.249953e-025 
+	   energy             3.026091e-025   1.626346e-025   3.026091e-027 
+	   displacement       7.030270e-025   7.030270e-025   7.030270e-031 
+ *************************************************************************
+ *                               WARNING                                 *
+ *                                                                       *
+ * No force acting on the system.                                        *
+ *************************************************************************
+
+........................ augmentation # 1
+warping norm: 0.0974867 0.1
+
+convergence summary
+    number of iterations   : 1
+    number of reformations : 0
+
+------- converged at time : 0.320939
+
+
+Data Record #1
+===========================================================================
+Step = 5
+Time = 0.320939164
+Data = ux;uy;uz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_disp_out.txt
+
+Data Record #2
+===========================================================================
+Step = 5
+Time = 0.320939164
+Data = sz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_stress_out.txt
+
+Data Record #3
+===========================================================================
+Step = 5
+Time = 0.320939164
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptemplate_out.txt
+
+Data Record #4
+===========================================================================
+Step = 5
+Time = 0.320939164
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptarget_out.txt
+
+Data Record #5
+===========================================================================
+Step = 5
+Time = 0.320939164
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpenergy_out.txt
+
+Data Record #6
+===========================================================================
+Step = 5
+Time = 0.320939164
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpforce_out.txt
+
+AUTO STEPPER: increasing time step, dt = 0.0751547
+
+
+===== beginning time step 6 : 0.396094 =====
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 1
+ Nonlinear solution status: time= 0.396094
+	stiffness updates             = 0
+	right hand side evaluations   = 2
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           3.356827e-025   3.278255e-025   3.356827e-025 
+	   energy             3.095242e-025   1.633542e-025   3.095242e-027 
+	   displacement       7.065275e-025   7.065275e-025   7.065275e-031 
+ *************************************************************************
+ *                               WARNING                                 *
+ *                                                                       *
+ * No force acting on the system.                                        *
+ *************************************************************************
+
+........................ augmentation # 1
+warping norm: 0.0974867 0.1
+
+convergence summary
+    number of iterations   : 1
+    number of reformations : 0
+
+------- converged at time : 0.396094
+
+
+Data Record #1
+===========================================================================
+Step = 6
+Time = 0.396093866
+Data = ux;uy;uz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_disp_out.txt
+
+Data Record #2
+===========================================================================
+Step = 6
+Time = 0.396093866
+Data = sz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_stress_out.txt
+
+Data Record #3
+===========================================================================
+Step = 6
+Time = 0.396093866
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptemplate_out.txt
+
+Data Record #4
+===========================================================================
+Step = 6
+Time = 0.396093866
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptarget_out.txt
+
+Data Record #5
+===========================================================================
+Step = 6
+Time = 0.396093866
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpenergy_out.txt
+
+Data Record #6
+===========================================================================
+Step = 6
+Time = 0.396093866
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpforce_out.txt
+
+AUTO STEPPER: increasing time step, dt = 0.0801238
+
+
+===== beginning time step 7 : 0.476218 =====
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 1
+ Nonlinear solution status: time= 0.476218
+	stiffness updates             = 0
+	right hand side evaluations   = 2
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           3.278255e-025   3.377621e-025   3.278255e-025 
+	   energy             3.049203e-025   1.635131e-025   3.049203e-027 
+	   displacement       7.136420e-025   7.136420e-025   7.136420e-031 
+ *************************************************************************
+ *                               WARNING                                 *
+ *                                                                       *
+ * No force acting on the system.                                        *
+ *************************************************************************
+
+........................ augmentation # 1
+warping norm: 0.0974867 0.1
+
+convergence summary
+    number of iterations   : 1
+    number of reformations : 0
+
+------- converged at time : 0.476218
+
+
+Data Record #1
+===========================================================================
+Step = 7
+Time = 0.476217628
+Data = ux;uy;uz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_disp_out.txt
+
+Data Record #2
+===========================================================================
+Step = 7
+Time = 0.476217628
+Data = sz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_stress_out.txt
+
+Data Record #3
+===========================================================================
+Step = 7
+Time = 0.476217628
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptemplate_out.txt
+
+Data Record #4
+===========================================================================
+Step = 7
+Time = 0.476217628
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptarget_out.txt
+
+Data Record #5
+===========================================================================
+Step = 7
+Time = 0.476217628
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpenergy_out.txt
+
+Data Record #6
+===========================================================================
+Step = 7
+Time = 0.476217628
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpforce_out.txt
+
+AUTO STEPPER: increasing time step, dt = 0.084099
+
+
+===== beginning time step 8 : 0.560317 =====
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 1
+ Nonlinear solution status: time= 0.560317
+	stiffness updates             = 0
+	right hand side evaluations   = 2
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           2.084734e-010   6.220233e-019   2.084734e-010 
+	   energy             1.530578e-009   4.556501e-014   1.530578e-011 
+	   displacement       2.011679e-008   2.011679e-008   2.011679e-014 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 2
+ Nonlinear solution status: time= 0.560317
+	stiffness updates             = 0
+	right hand side evaluations   = 3
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           2.084734e-010   3.298822e-025   2.084734e-010 
+	   energy             1.530578e-009   6.106962e-023   1.530578e-011 
+	   displacement       2.011679e-008   1.994814e-017   2.011777e-014 
+
+........................ augmentation # 1
+warping norm: 0.139503 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 3
+ Nonlinear solution status: time= 0.560317
+	stiffness updates             = 0
+	right hand side evaluations   = 5
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           2.084734e-010   3.437825e-017   2.084734e-010 
+	   energy             1.530578e-009   6.725026e-013   1.530578e-011 
+	   displacement       2.011679e-008   1.898954e-007   3.336299e-013 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 4
+ Nonlinear solution status: time= 0.560317
+	stiffness updates             = 0
+	right hand side evaluations   = 6
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           2.084734e-010   3.336490e-025   2.084734e-010 
+	   energy             1.530578e-009   1.624012e-021   1.530578e-011 
+	   displacement       2.011679e-008   4.624676e-016   3.336475e-013 
+
+........................ augmentation # 2
+warping norm: 0.130415 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 5
+ Nonlinear solution status: time= 0.560317
+	stiffness updates             = 0
+	right hand side evaluations   = 8
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           2.084734e-010   3.437811e-017   2.084734e-010 
+	   energy             1.530578e-009   6.724942e-013   1.530578e-011 
+	   displacement       2.011679e-008   1.898972e-007   1.026968e-012 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 6
+ Nonlinear solution status: time= 0.560317
+	stiffness updates             = 0
+	right hand side evaluations   = 9
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           2.084734e-010   3.399594e-025   2.084734e-010 
+	   energy             1.530578e-009   1.621621e-021   1.530578e-011 
+	   displacement       2.011679e-008   4.624815e-016   1.026999e-012 
+
+........................ augmentation # 3
+warping norm: 0.122438 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 7
+ Nonlinear solution status: time= 0.560317
+	stiffness updates             = 0
+	right hand side evaluations   = 11
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           2.084734e-010   3.437799e-017   2.084734e-010 
+	   energy             1.530578e-009   6.724857e-013   1.530578e-011 
+	   displacement       2.011679e-008   1.898990e-007   2.100133e-012 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 8
+ Nonlinear solution status: time= 0.560317
+	stiffness updates             = 0
+	right hand side evaluations   = 12
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           2.084734e-010   3.447978e-025   2.084734e-010 
+	   energy             1.530578e-009   1.624062e-021   1.530578e-011 
+	   displacement       2.011679e-008   4.624953e-016   2.100177e-012 
+
+........................ augmentation # 4
+warping norm: 0.115379 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 9
+ Nonlinear solution status: time= 0.560317
+	stiffness updates             = 0
+	right hand side evaluations   = 14
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           2.084734e-010   3.437786e-017   2.084734e-010 
+	   energy             1.530578e-009   6.724773e-013   1.530578e-011 
+	   displacement       2.011679e-008   1.899007e-007   3.553130e-012 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 10
+ Nonlinear solution status: time= 0.560317
+	stiffness updates             = 0
+	right hand side evaluations   = 15
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           2.084734e-010   3.448518e-025   2.084734e-010 
+	   energy             1.530578e-009   1.623584e-021   1.530578e-011 
+	   displacement       2.011679e-008   4.625091e-016   3.553187e-012 
+
+........................ augmentation # 5
+warping norm: 0.109089 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 11
+ Nonlinear solution status: time= 0.560317
+	stiffness updates             = 0
+	right hand side evaluations   = 17
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           2.084734e-010   3.437773e-017   2.084734e-010 
+	   energy             1.530578e-009   6.724690e-013   1.530578e-011 
+	   displacement       2.011679e-008   1.899025e-007   5.385964e-012 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 12
+ Nonlinear solution status: time= 0.560317
+	stiffness updates             = 0
+	right hand side evaluations   = 18
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           2.084734e-010   3.418330e-025   2.084734e-010 
+	   energy             1.530578e-009   1.623523e-021   1.530578e-011 
+	   displacement       2.011679e-008   4.625230e-016   5.386035e-012 
+
+........................ augmentation # 6
+warping norm: 0.103449 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 13
+ Nonlinear solution status: time= 0.560317
+	stiffness updates             = 0
+	right hand side evaluations   = 20
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           2.084734e-010   3.437760e-017   2.084734e-010 
+	   energy             1.530578e-009   6.724606e-013   1.530578e-011 
+	   displacement       2.011679e-008   1.899042e-007   7.598641e-012 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 14
+ Nonlinear solution status: time= 0.560317
+	stiffness updates             = 0
+	right hand side evaluations   = 21
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           2.084734e-010   3.428258e-025   2.084734e-010 
+	   energy             1.530578e-009   1.626420e-021   1.530578e-011 
+	   displacement       2.011679e-008   4.625369e-016   7.598725e-012 
+
+........................ augmentation # 7
+warping norm: 0.0983624 0.1
+
+convergence summary
+    number of iterations   : 14
+    number of reformations : 0
+
+------- converged at time : 0.560317
+
+
+Data Record #1
+===========================================================================
+Step = 8
+Time = 0.560316638
+Data = ux;uy;uz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_disp_out.txt
+
+Data Record #2
+===========================================================================
+Step = 8
+Time = 0.560316638
+Data = sz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_stress_out.txt
+
+Data Record #3
+===========================================================================
+Step = 8
+Time = 0.560316638
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptemplate_out.txt
+
+Data Record #4
+===========================================================================
+Step = 8
+Time = 0.560316638
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptarget_out.txt
+
+Data Record #5
+===========================================================================
+Step = 8
+Time = 0.560316638
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpenergy_out.txt
+
+Data Record #6
+===========================================================================
+Step = 8
+Time = 0.560316638
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpforce_out.txt
+
+AUTO STEPPER: decreasing time step, dt = 0.0554011
+
+
+===== beginning time step 9 : 0.615718 =====
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 1
+ Nonlinear solution status: time= 0.615718
+	stiffness updates             = 0
+	right hand side evaluations   = 2
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.758260e-010   5.834412e-019   1.758260e-010 
+	   energy             1.291176e-009   4.595563e-014   1.291176e-011 
+	   displacement       1.697205e-008   1.697205e-008   1.697205e-014 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 2
+ Nonlinear solution status: time= 0.615718
+	stiffness updates             = 0
+	right hand side evaluations   = 3
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.758260e-010   3.360419e-025   1.758260e-010 
+	   energy             1.291176e-009   9.494017e-023   1.291176e-011 
+	   displacement       1.697205e-008   2.432744e-017   1.697306e-014 
+
+........................ augmentation # 1
+warping norm: 0.124958 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 3
+ Nonlinear solution status: time= 0.615718
+	stiffness updates             = 0
+	right hand side evaluations   = 5
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.758260e-010   9.785684e-017   1.758260e-010 
+	   energy             1.291176e-009   1.473685e-012   1.291176e-011 
+	   displacement       1.697205e-008   3.204167e-007   4.848815e-013 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 4
+ Nonlinear solution status: time= 0.615718
+	stiffness updates             = 0
+	right hand side evaluations   = 6
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.758260e-010   3.692219e-025   1.758260e-010 
+	   energy             1.291176e-009   6.008809e-021   1.291176e-011 
+	   displacement       1.697205e-008   1.316755e-015   4.849173e-013 
+
+........................ augmentation # 2
+warping norm: 0.117614 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 5
+ Nonlinear solution status: time= 0.615718
+	stiffness updates             = 0
+	right hand side evaluations   = 8
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.758260e-010   9.785634e-017   1.758260e-010 
+	   energy             1.291176e-009   1.473661e-012   1.291176e-011 
+	   displacement       1.697205e-008   3.204206e-007   1.593697e-012 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 6
+ Nonlinear solution status: time= 0.615718
+	stiffness updates             = 0
+	right hand side evaluations   = 9
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.758260e-010   3.689952e-025   1.758260e-010 
+	   energy             1.291176e-009   6.013518e-021   1.291176e-011 
+	   displacement       1.697205e-008   1.316807e-015   1.593762e-012 
+
+........................ augmentation # 3
+warping norm: 0.111084 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 7
+ Nonlinear solution status: time= 0.615718
+	stiffness updates             = 0
+	right hand side evaluations   = 11
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.758260e-010   9.785582e-017   1.758260e-010 
+	   energy             1.291176e-009   1.473637e-012   1.291176e-011 
+	   displacement       1.697205e-008   3.204244e-007   3.343424e-012 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 8
+ Nonlinear solution status: time= 0.615718
+	stiffness updates             = 0
+	right hand side evaluations   = 12
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.758260e-010   3.718201e-025   1.758260e-010 
+	   energy             1.291176e-009   6.009798e-021   1.291176e-011 
+	   displacement       1.697205e-008   1.316858e-015   3.343518e-012 
+
+........................ augmentation # 4
+warping norm: 0.105241 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 9
+ Nonlinear solution status: time= 0.615718
+	stiffness updates             = 0
+	right hand side evaluations   = 14
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.758260e-010   9.785529e-017   1.758260e-010 
+	   energy             1.291176e-009   1.473613e-012   1.291176e-011 
+	   displacement       1.697205e-008   3.204282e-007   5.734074e-012 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 10
+ Nonlinear solution status: time= 0.615718
+	stiffness updates             = 0
+	right hand side evaluations   = 15
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.758260e-010   3.672982e-025   1.758260e-010 
+	   energy             1.291176e-009   6.012615e-021   1.291176e-011 
+	   displacement       1.697205e-008   1.316909e-015   5.734198e-012 
+
+........................ augmentation # 5
+warping norm: 0.099981 0.1
+
+convergence summary
+    number of iterations   : 10
+    number of reformations : 0
+
+------- converged at time : 0.615718
+
+
+Data Record #1
+===========================================================================
+Step = 9
+Time = 0.615717709
+Data = ux;uy;uz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_disp_out.txt
+
+Data Record #2
+===========================================================================
+Step = 9
+Time = 0.615717709
+Data = sz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_stress_out.txt
+
+Data Record #3
+===========================================================================
+Step = 9
+Time = 0.615717709
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptemplate_out.txt
+
+Data Record #4
+===========================================================================
+Step = 9
+Time = 0.615717709
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptarget_out.txt
+
+Data Record #5
+===========================================================================
+Step = 9
+Time = 0.615717709
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpenergy_out.txt
+
+Data Record #6
+===========================================================================
+Step = 9
+Time = 0.615717709
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpforce_out.txt
+
+AUTO STEPPER: decreasing time step, dt = 0.0431389
+
+
+===== beginning time step 10 : 0.658857 =====
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 1
+ Nonlinear solution status: time= 0.658857
+	stiffness updates             = 0
+	right hand side evaluations   = 2
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.065791e-010   3.307726e-019   1.065791e-010 
+	   energy             7.828162e-010   3.052684e-014   7.828162e-012 
+	   displacement       1.029079e-008   1.029079e-008   1.029079e-014 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 2
+ Nonlinear solution status: time= 0.658857
+	stiffness updates             = 0
+	right hand side evaluations   = 3
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.065791e-010   3.310774e-025   1.065791e-010 
+	   energy             7.828162e-010   7.878563e-023   7.828162e-012 
+	   displacement       1.029079e-008   1.797354e-017   1.029147e-014 
+
+........................ augmentation # 1
+warping norm: 0.116306 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 3
+ Nonlinear solution status: time= 0.658857
+	stiffness updates             = 0
+	right hand side evaluations   = 5
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.065791e-010   1.891914e-016   1.065791e-010 
+	   energy             7.828162e-010   2.416127e-012   7.828162e-012 
+	   displacement       1.029079e-008   4.455634e-007   5.912876e-013 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 4
+ Nonlinear solution status: time= 0.658857
+	stiffness updates             = 0
+	right hand side evaluations   = 6
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.065791e-010   4.304496e-025   1.065791e-010 
+	   energy             7.828162e-010   1.370695e-020   7.828162e-012 
+	   displacement       1.029079e-008   2.546326e-015   5.913426e-013 
+
+........................ augmentation # 2
+warping norm: 0.109916 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 5
+ Nonlinear solution status: time= 0.658857
+	stiffness updates             = 0
+	right hand side evaluations   = 8
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.065791e-010   1.891901e-016   1.065791e-010 
+	   energy             7.828162e-010   2.416080e-012   7.828162e-012 
+	   displacement       1.029079e-008   4.455697e-007   2.063527e-012 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 6
+ Nonlinear solution status: time= 0.658857
+	stiffness updates             = 0
+	right hand side evaluations   = 9
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.065791e-010   4.302880e-025   1.065791e-010 
+	   energy             7.828162e-010   1.371013e-020   7.828162e-012 
+	   displacement       1.029079e-008   2.546441e-015   2.063630e-012 
+
+........................ augmentation # 3
+warping norm: 0.104191 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 7
+ Nonlinear solution status: time= 0.658857
+	stiffness updates             = 0
+	right hand side evaluations   = 11
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.065791e-010   1.891889e-016   1.065791e-010 
+	   energy             7.828162e-010   2.416033e-012   7.828162e-012 
+	   displacement       1.029079e-008   4.455760e-007   4.427021e-012 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 8
+ Nonlinear solution status: time= 0.658857
+	stiffness updates             = 0
+	right hand side evaluations   = 12
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.065791e-010   4.278834e-025   1.065791e-010 
+	   energy             7.828162e-010   1.370225e-020   7.828162e-012 
+	   displacement       1.029079e-008   2.546557e-015   4.427172e-012 
+
+........................ augmentation # 4
+warping norm: 0.0990323 0.1
+
+convergence summary
+    number of iterations   : 8
+    number of reformations : 0
+
+------- converged at time : 0.658857
+
+
+Data Record #1
+===========================================================================
+Step = 10
+Time = 0.658856598
+Data = ux;uy;uz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_disp_out.txt
+
+Data Record #2
+===========================================================================
+Step = 10
+Time = 0.658856598
+Data = sz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_stress_out.txt
+
+Data Record #3
+===========================================================================
+Step = 10
+Time = 0.658856598
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptemplate_out.txt
+
+Data Record #4
+===========================================================================
+Step = 10
+Time = 0.658856598
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptarget_out.txt
+
+Data Record #5
+===========================================================================
+Step = 10
+Time = 0.658856598
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpenergy_out.txt
+
+Data Record #6
+===========================================================================
+Step = 10
+Time = 0.658856598
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpforce_out.txt
+
+AUTO STEPPER: decreasing time step, dt = 0.0374933
+
+
+===== beginning time step 11 : 0.69635 =====
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 1
+ Nonlinear solution status: time= 0.69635
+	stiffness updates             = 0
+	right hand side evaluations   = 2
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.049033e-011   2.634120e-019   8.049033e-011 
+	   energy             5.912979e-010   2.520642e-014   5.912979e-012 
+	   displacement       7.773746e-009   7.773746e-009   7.773746e-015 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 2
+ Nonlinear solution status: time= 0.69635
+	stiffness updates             = 0
+	right hand side evaluations   = 3
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.049033e-011   3.323668e-025   8.049033e-011 
+	   energy             5.912979e-010   7.986527e-023   5.912979e-012 
+	   displacement       7.773746e-009   1.637228e-017   7.774317e-015 
+
+........................ augmentation # 1
+warping norm: 0.111004 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 3
+ Nonlinear solution status: time= 0.69635
+	stiffness updates             = 0
+	right hand side evaluations   = 5
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.049033e-011   3.107213e-016   8.049033e-011 
+	   energy             5.912979e-010   3.505150e-012   5.912979e-012 
+	   displacement       7.773746e-009   5.710566e-007   7.120912e-013 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 4
+ Nonlinear solution status: time= 0.69635
+	stiffness updates             = 0
+	right hand side evaluations   = 6
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.049033e-011   5.383711e-025   8.049033e-011 
+	   energy             5.912979e-010   2.549027e-020   5.912979e-012 
+	   displacement       7.773746e-009   4.182833e-015   7.121686e-013 
+
+........................ augmentation # 2
+warping norm: 0.105168 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 5
+ Nonlinear solution status: time= 0.69635
+	stiffness updates             = 0
+	right hand side evaluations   = 8
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.049033e-011   3.107189e-016   8.049033e-011 
+	   energy             5.912979e-010   3.505072e-012   5.912979e-012 
+	   displacement       7.773746e-009   5.710657e-007   2.558687e-012 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 6
+ Nonlinear solution status: time= 0.69635
+	stiffness updates             = 0
+	right hand side evaluations   = 9
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.049033e-011   5.376356e-025   8.049033e-011 
+	   energy             5.912979e-010   2.548784e-020   5.912979e-012 
+	   displacement       7.773746e-009   4.183047e-015   2.558834e-012 
+
+........................ augmentation # 3
+warping norm: 0.0999139 0.1
+
+convergence summary
+    number of iterations   : 6
+    number of reformations : 0
+
+------- converged at time : 0.69635
+
+
+Data Record #1
+===========================================================================
+Step = 11
+Time = 0.696349946
+Data = ux;uy;uz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_disp_out.txt
+
+Data Record #2
+===========================================================================
+Step = 11
+Time = 0.696349946
+Data = sz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_stress_out.txt
+
+Data Record #3
+===========================================================================
+Step = 11
+Time = 0.696349946
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptemplate_out.txt
+
+Data Record #4
+===========================================================================
+Step = 11
+Time = 0.696349946
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptarget_out.txt
+
+Data Record #5
+===========================================================================
+Step = 11
+Time = 0.696349946
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpenergy_out.txt
+
+Data Record #6
+===========================================================================
+Step = 11
+Time = 0.696349946
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpforce_out.txt
+
+===== beginning time step 12 : 0.733843 =====
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 1
+ Nonlinear solution status: time= 0.733843
+	stiffness updates             = 0
+	right hand side evaluations   = 2
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.047638e-011   3.064508e-019   8.047638e-011 
+	   energy             5.912715e-010   2.780103e-014   5.912715e-012 
+	   displacement       7.773864e-009   7.773864e-009   7.773864e-015 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 2
+ Nonlinear solution status: time= 0.733843
+	stiffness updates             = 0
+	right hand side evaluations   = 3
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.047638e-011   3.329963e-025   8.047638e-011 
+	   energy             5.912715e-010   1.086594e-022   5.912715e-012 
+	   displacement       7.773864e-009   1.998911e-017   7.774496e-015 
+
+........................ augmentation # 1
+warping norm: 0.110586 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 3
+ Nonlinear solution status: time= 0.733843
+	stiffness updates             = 0
+	right hand side evaluations   = 5
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.047638e-011   4.830942e-016   8.047638e-011 
+	   energy             5.912715e-010   4.880245e-012   5.912715e-012 
+	   displacement       7.773864e-009   7.120966e-007   8.686823e-013 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 4
+ Nonlinear solution status: time= 0.733843
+	stiffness updates             = 0
+	right hand side evaluations   = 6
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.047638e-011   7.252869e-025   8.047638e-011 
+	   energy             5.912715e-010   4.427592e-020   5.912715e-012 
+	   displacement       7.773864e-009   6.504320e-015   8.687889e-013 
+
+........................ augmentation # 2
+warping norm: 0.104792 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 5
+ Nonlinear solution status: time= 0.733843
+	stiffness updates             = 0
+	right hand side evaluations   = 8
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.047638e-011   4.830899e-016   8.047638e-011 
+	   energy             5.912715e-010   4.880123e-012   5.912715e-012 
+	   displacement       7.773864e-009   7.121093e-007   3.154013e-012 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 6
+ Nonlinear solution status: time= 0.733843
+	stiffness updates             = 0
+	right hand side evaluations   = 9
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.047638e-011   7.340071e-025   8.047638e-011 
+	   energy             5.912715e-010   4.427635e-020   5.912715e-012 
+	   displacement       7.773864e-009   6.504688e-015   3.154216e-012 
+
+........................ augmentation # 3
+warping norm: 0.0995748 0.1
+
+convergence summary
+    number of iterations   : 6
+    number of reformations : 0
+
+------- converged at time : 0.733843
+
+
+Data Record #1
+===========================================================================
+Step = 12
+Time = 0.733843295
+Data = ux;uy;uz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_disp_out.txt
+
+Data Record #2
+===========================================================================
+Step = 12
+Time = 0.733843295
+Data = sz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_stress_out.txt
+
+Data Record #3
+===========================================================================
+Step = 12
+Time = 0.733843295
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptemplate_out.txt
+
+Data Record #4
+===========================================================================
+Step = 12
+Time = 0.733843295
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptarget_out.txt
+
+Data Record #5
+===========================================================================
+Step = 12
+Time = 0.733843295
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpenergy_out.txt
+
+Data Record #6
+===========================================================================
+Step = 12
+Time = 0.733843295
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpforce_out.txt
+
+===== beginning time step 13 : 0.771337 =====
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 1
+ Nonlinear solution status: time= 0.771337
+	stiffness updates             = 0
+	right hand side evaluations   = 2
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.046090e-011   3.531934e-019   8.046090e-011 
+	   energy             5.912429e-010   3.039612e-014   5.912429e-012 
+	   displacement       7.774011e-009   7.774011e-009   7.774011e-015 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 2
+ Nonlinear solution status: time= 0.771337
+	stiffness updates             = 0
+	right hand side evaluations   = 3
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.046090e-011   3.299602e-025   8.046090e-011 
+	   energy             5.912429e-010   1.426114e-022   5.912429e-012 
+	   displacement       7.774011e-009   2.397068e-017   7.774704e-015 
+
+........................ augmentation # 1
+warping norm: 0.109111 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 3
+ Nonlinear solution status: time= 0.771337
+	stiffness updates             = 0
+	right hand side evaluations   = 5
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.046090e-011   7.188244e-016   8.046090e-011 
+	   energy             5.912429e-010   6.574650e-012   5.912429e-012 
+	   displacement       7.774011e-009   8.686922e-007   1.040830e-012 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 4
+ Nonlinear solution status: time= 0.771337
+	stiffness updates             = 0
+	right hand side evaluations   = 6
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.046090e-011   1.053647e-024   8.046090e-011 
+	   energy             5.912429e-010   7.276674e-020   5.912429e-012 
+	   displacement       7.774011e-009   9.679864e-015   1.040973e-012 
+
+........................ augmentation # 2
+warping norm: 0.103467 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 5
+ Nonlinear solution status: time= 0.771337
+	stiffness updates             = 0
+	right hand side evaluations   = 8
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.046090e-011   7.188170e-016   8.046090e-011 
+	   energy             5.912429e-010   6.574468e-012   5.912429e-012 
+	   displacement       7.774011e-009   8.687093e-007   3.811578e-012 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 6
+ Nonlinear solution status: time= 0.771337
+	stiffness updates             = 0
+	right hand side evaluations   = 9
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.046090e-011   1.057972e-024   8.046090e-011 
+	   energy             5.912429e-010   7.275998e-020   5.912429e-012 
+	   displacement       7.774011e-009   9.680468e-015   3.811851e-012 
+
+........................ augmentation # 3
+warping norm: 0.0983763 0.1
+
+convergence summary
+    number of iterations   : 6
+    number of reformations : 0
+
+------- converged at time : 0.771337
+
+
+Data Record #1
+===========================================================================
+Step = 13
+Time = 0.771336643
+Data = ux;uy;uz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_disp_out.txt
+
+Data Record #2
+===========================================================================
+Step = 13
+Time = 0.771336643
+Data = sz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_stress_out.txt
+
+Data Record #3
+===========================================================================
+Step = 13
+Time = 0.771336643
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptemplate_out.txt
+
+Data Record #4
+===========================================================================
+Step = 13
+Time = 0.771336643
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptarget_out.txt
+
+Data Record #5
+===========================================================================
+Step = 13
+Time = 0.771336643
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpenergy_out.txt
+
+Data Record #6
+===========================================================================
+Step = 13
+Time = 0.771336643
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpforce_out.txt
+
+===== beginning time step 14 : 0.80883 =====
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 1
+ Nonlinear solution status: time= 0.80883
+	stiffness updates             = 0
+	right hand side evaluations   = 2
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.044389e-011   4.036399e-019   8.044389e-011 
+	   energy             5.912120e-010   3.299172e-014   5.912120e-012 
+	   displacement       7.774186e-009   7.774186e-009   7.774186e-015 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 2
+ Nonlinear solution status: time= 0.80883
+	stiffness updates             = 0
+	right hand side evaluations   = 3
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.044389e-011   3.280454e-025   8.044389e-011 
+	   energy             5.912120e-010   1.831730e-022   5.912120e-012 
+	   displacement       7.774186e-009   2.831771e-017   7.774941e-015 
+
+........................ augmentation # 1
+warping norm: 0.106923 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 3
+ Nonlinear solution status: time= 0.80883
+	stiffness updates             = 0
+	right hand side evaluations   = 5
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.044389e-011   1.031802e-015   8.044389e-011 
+	   energy             5.912120e-010   8.621623e-012   5.912120e-012 
+	   displacement       7.774186e-009   1.040846e-006   1.228538e-012 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 4
+ Nonlinear solution status: time= 0.80883
+	stiffness updates             = 0
+	right hand side evaluations   = 6
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.044389e-011   1.581911e-024   8.044389e-011 
+	   energy             5.912120e-010   1.143671e-019   5.912120e-012 
+	   displacement       7.774186e-009   1.389714e-014   1.228723e-012 
+
+........................ augmentation # 2
+warping norm: 0.101496 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 5
+ Nonlinear solution status: time= 0.80883
+	stiffness updates             = 0
+	right hand side evaluations   = 8
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.044389e-011   1.031790e-015   8.044389e-011 
+	   energy             5.912120e-010   8.621360e-012   5.912120e-012 
+	   displacement       7.774186e-009   1.040868e-006   4.531394e-012 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 6
+ Nonlinear solution status: time= 0.80883
+	stiffness updates             = 0
+	right hand side evaluations   = 9
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.044389e-011   1.572637e-024   8.044389e-011 
+	   energy             5.912120e-010   1.143575e-019   5.912120e-012 
+	   displacement       7.774186e-009   1.389808e-014   4.531750e-012 
+
+........................ augmentation # 3
+warping norm: 0.0965923 0.1
+
+convergence summary
+    number of iterations   : 6
+    number of reformations : 0
+
+------- converged at time : 0.80883
+
+
+Data Record #1
+===========================================================================
+Step = 14
+Time = 0.808829991
+Data = ux;uy;uz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_disp_out.txt
+
+Data Record #2
+===========================================================================
+Step = 14
+Time = 0.808829991
+Data = sz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_stress_out.txt
+
+Data Record #3
+===========================================================================
+Step = 14
+Time = 0.808829991
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptemplate_out.txt
+
+Data Record #4
+===========================================================================
+Step = 14
+Time = 0.808829991
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptarget_out.txt
+
+Data Record #5
+===========================================================================
+Step = 14
+Time = 0.808829991
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpenergy_out.txt
+
+Data Record #6
+===========================================================================
+Step = 14
+Time = 0.808829991
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpforce_out.txt
+
+===== beginning time step 15 : 0.846323 =====
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 1
+ Nonlinear solution status: time= 0.846323
+	stiffness updates             = 0
+	right hand side evaluations   = 2
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.042533e-011   4.577925e-019   8.042533e-011 
+	   energy             5.911789e-010   3.558790e-014   5.911789e-012 
+	   displacement       7.774390e-009   7.774390e-009   7.774390e-015 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 2
+ Nonlinear solution status: time= 0.846323
+	stiffness updates             = 0
+	right hand side evaluations   = 3
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.042533e-011   3.349839e-025   8.042533e-011 
+	   energy             5.911789e-010   2.316643e-022   5.911789e-012 
+	   displacement       7.774390e-009   3.303096e-017   7.775206e-015 
+
+........................ augmentation # 1
+warping norm: 0.104276 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 3
+ Nonlinear solution status: time= 0.846323
+	stiffness updates             = 0
+	right hand side evaluations   = 5
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.042533e-011   1.437291e-015   8.042533e-011 
+	   energy             5.911789e-010   1.105440e-011   5.911789e-012 
+	   displacement       7.774390e-009   1.228560e-006   1.431807e-012 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 4
+ Nonlinear solution status: time= 0.846323
+	stiffness updates             = 0
+	right hand side evaluations   = 6
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           8.042533e-011   2.369274e-024   8.042533e-011 
+	   energy             5.911789e-010   1.731149e-019   5.911789e-012 
+	   displacement       7.774390e-009   1.936253e-014   1.432044e-012 
+
+........................ augmentation # 2
+warping norm: 0.0991067 0.1
+
+convergence summary
+    number of iterations   : 4
+    number of reformations : 0
+
+------- converged at time : 0.846323
+
+
+Data Record #1
+===========================================================================
+Step = 15
+Time = 0.846323339
+Data = ux;uy;uz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_disp_out.txt
+
+Data Record #2
+===========================================================================
+Step = 15
+Time = 0.846323339
+Data = sz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_stress_out.txt
+
+Data Record #3
+===========================================================================
+Step = 15
+Time = 0.846323339
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptemplate_out.txt
+
+Data Record #4
+===========================================================================
+Step = 15
+Time = 0.846323339
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptarget_out.txt
+
+Data Record #5
+===========================================================================
+Step = 15
+Time = 0.846323339
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpenergy_out.txt
+
+Data Record #6
+===========================================================================
+Step = 15
+Time = 0.846323339
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpforce_out.txt
+
+AUTO STEPPER: increasing time step, dt = 0.0499947
+
+
+===== beginning time step 16 : 0.896318 =====
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 1
+ Nonlinear solution status: time= 0.896318
+	stiffness updates             = 0
+	right hand side evaluations   = 2
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.429801e-010   1.094637e-018   1.429801e-010 
+	   energy             1.051092e-009   7.118958e-014   1.051092e-011 
+	   displacement       1.382310e-008   1.382310e-008   1.382310e-014 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 2
+ Nonlinear solution status: time= 0.896318
+	stiffness updates             = 0
+	right hand side evaluations   = 3
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.429801e-010   3.338331e-025   1.429801e-010 
+	   energy             1.051092e-009   5.805873e-022   1.051092e-011 
+	   displacement       1.382310e-008   7.395853e-017   1.382473e-014 
+
+........................ augmentation # 1
+warping norm: 0.108746 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 3
+ Nonlinear solution status: time= 0.896318
+	stiffness updates             = 0
+	right hand side evaluations   = 5
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.429801e-010   2.150910e-015   1.429801e-010 
+	   energy             1.051092e-009   1.495677e-011   1.051092e-011 
+	   displacement       1.382310e-008   1.503019e-006   1.805141e-012 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 4
+ Nonlinear solution status: time= 0.896318
+	stiffness updates             = 0
+	right hand side evaluations   = 6
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.429801e-010   4.072376e-024   1.429801e-010 
+	   energy             1.051092e-009   2.865844e-019   1.051092e-011 
+	   displacement       1.382310e-008   2.898032e-014   1.805466e-012 
+
+........................ augmentation # 2
+warping norm: 0.103136 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 5
+ Nonlinear solution status: time= 0.896318
+	stiffness updates             = 0
+	right hand side evaluations   = 8
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.429801e-010   2.150877e-015   1.429801e-010 
+	   energy             1.051092e-009   1.495621e-011   1.051092e-011 
+	   displacement       1.382310e-008   1.503058e-006   6.603198e-012 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 6
+ Nonlinear solution status: time= 0.896318
+	stiffness updates             = 0
+	right hand side evaluations   = 9
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.429801e-010   4.077460e-024   1.429801e-010 
+	   energy             1.051092e-009   2.866129e-019   1.051092e-011 
+	   displacement       1.382310e-008   2.898266e-014   6.603818e-012 
+
+........................ augmentation # 3
+warping norm: 0.0980762 0.1
+
+convergence summary
+    number of iterations   : 6
+    number of reformations : 0
+
+------- converged at time : 0.896318
+
+
+Data Record #1
+===========================================================================
+Step = 16
+Time = 0.896318018
+Data = ux;uy;uz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_disp_out.txt
+
+Data Record #2
+===========================================================================
+Step = 16
+Time = 0.896318018
+Data = sz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_stress_out.txt
+
+Data Record #3
+===========================================================================
+Step = 16
+Time = 0.896318018
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptemplate_out.txt
+
+Data Record #4
+===========================================================================
+Step = 16
+Time = 0.896318018
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptarget_out.txt
+
+Data Record #5
+===========================================================================
+Step = 16
+Time = 0.896318018
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpenergy_out.txt
+
+Data Record #6
+===========================================================================
+Step = 16
+Time = 0.896318018
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpforce_out.txt
+
+===== beginning time step 17 : 0.946313 =====
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 1
+ Nonlinear solution status: time= 0.946313
+	stiffness updates             = 0
+	right hand side evaluations   = 2
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.429403e-010   1.252449e-018   1.429403e-010 
+	   energy             1.051020e-009   7.734528e-014   1.051020e-011 
+	   displacement       1.382351e-008   1.382351e-008   1.382351e-014 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 2
+ Nonlinear solution status: time= 0.946313
+	stiffness updates             = 0
+	right hand side evaluations   = 3
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.429403e-010   3.422144e-025   1.429403e-010 
+	   energy             1.051020e-009   7.467958e-022   1.051020e-011 
+	   displacement       1.382351e-008   8.755369e-017   1.382528e-014 
+
+........................ augmentation # 1
+warping norm: 0.106715 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 3
+ Nonlinear solution status: time= 0.946313
+	stiffness updates             = 0
+	right hand side evaluations   = 5
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.429403e-010   3.101998e-015   1.429403e-010 
+	   energy             1.051020e-009   1.968271e-011   1.051020e-011 
+	   displacement       1.382351e-008   1.805176e-006   2.134957e-012 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 4
+ Nonlinear solution status: time= 0.946313
+	stiffness updates             = 0
+	right hand side evaluations   = 6
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.429403e-010   6.816328e-024   1.429403e-010 
+	   energy             1.051020e-009   4.531320e-019   1.051020e-011 
+	   displacement       1.382351e-008   4.180533e-014   2.135381e-012 
+
+........................ augmentation # 2
+warping norm: 0.101307 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 5
+ Nonlinear solution status: time= 0.946313
+	stiffness updates             = 0
+	right hand side evaluations   = 8
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.429403e-010   3.101944e-015   1.429403e-010 
+	   energy             1.051020e-009   1.968190e-011   1.051020e-011 
+	   displacement       1.382351e-008   1.805226e-006   7.867359e-012 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 6
+ Nonlinear solution status: time= 0.946313
+	stiffness updates             = 0
+	right hand side evaluations   = 9
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.429403e-010   6.821295e-024   1.429403e-010 
+	   energy             1.051020e-009   4.531289e-019   1.051020e-011 
+	   displacement       1.382351e-008   4.180900e-014   7.868173e-012 
+
+........................ augmentation # 3
+warping norm: 0.09642 0.1
+
+convergence summary
+    number of iterations   : 6
+    number of reformations : 0
+
+------- converged at time : 0.946313
+
+
+Data Record #1
+===========================================================================
+Step = 17
+Time = 0.946312697
+Data = ux;uy;uz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_disp_out.txt
+
+Data Record #2
+===========================================================================
+Step = 17
+Time = 0.946312697
+Data = sz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_stress_out.txt
+
+Data Record #3
+===========================================================================
+Step = 17
+Time = 0.946312697
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptemplate_out.txt
+
+Data Record #4
+===========================================================================
+Step = 17
+Time = 0.946312697
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptarget_out.txt
+
+Data Record #5
+===========================================================================
+Step = 17
+Time = 0.946312697
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpenergy_out.txt
+
+Data Record #6
+===========================================================================
+Step = 17
+Time = 0.946312697
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpforce_out.txt
+
+===== beginning time step 18 : 0.996307 =====
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 1
+ Nonlinear solution status: time= 0.996307
+	stiffness updates             = 0
+	right hand side evaluations   = 2
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.428968e-010   1.421982e-018   1.428968e-010 
+	   energy             1.050941e-009   8.350279e-014   1.050941e-011 
+	   displacement       1.382398e-008   1.382398e-008   1.382398e-014 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 2
+ Nonlinear solution status: time= 0.996307
+	stiffness updates             = 0
+	right hand side evaluations   = 3
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.428968e-010   3.447855e-025   1.428968e-010 
+	   energy             1.050941e-009   9.461846e-022   1.050941e-011 
+	   displacement       1.382398e-008   1.023109e-016   1.382589e-014 
+
+........................ augmentation # 1
+warping norm: 0.104186 0.1
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 3
+ Nonlinear solution status: time= 0.996307
+	stiffness updates             = 0
+	right hand side evaluations   = 5
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.428968e-010   4.338151e-015   1.428968e-010 
+	   energy             1.050941e-009   2.531120e-011   1.050941e-011 
+	   displacement       1.382398e-008   2.135008e-006   2.492452e-012 
+Reforming stiffness matrix: reformation #2
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 4
+ Nonlinear solution status: time= 0.996307
+	stiffness updates             = 0
+	right hand side evaluations   = 6
+	stiffness matrix reformations = 2
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           1.428968e-010   1.107281e-023   1.428968e-010 
+	   energy             1.050941e-009   6.893324e-019   1.050941e-011 
+	   displacement       1.382398e-008   5.848066e-014   2.492994e-012 
+
+........................ augmentation # 2
+warping norm: 0.0990243 0.1
+
+convergence summary
+    number of iterations   : 4
+    number of reformations : 0
+
+------- converged at time : 0.996307
+
+
+Data Record #1
+===========================================================================
+Step = 18
+Time = 0.996307375
+Data = ux;uy;uz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_disp_out.txt
+
+Data Record #2
+===========================================================================
+Step = 18
+Time = 0.996307375
+Data = sz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_stress_out.txt
+
+Data Record #3
+===========================================================================
+Step = 18
+Time = 0.996307375
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptemplate_out.txt
+
+Data Record #4
+===========================================================================
+Step = 18
+Time = 0.996307375
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptarget_out.txt
+
+Data Record #5
+===========================================================================
+Step = 18
+Time = 0.996307375
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpenergy_out.txt
+
+Data Record #6
+===========================================================================
+Step = 18
+Time = 0.996307375
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpforce_out.txt
+
+AUTO STEPPER: increasing time step, dt = 0.0599957
+
+MUST POINT CONTROLLER: adjusting time step. dt = 0.00369262
+
+
+===== beginning time step 19 : 1 =====
+Reforming stiffness matrix: reformation #1
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 136857
+	Nr of nonzeroes in stiffness matrix ....... : 5272116
+
+ 1
+ Nonlinear solution status: time= 1
+	stiffness updates             = 0
+	right hand side evaluations   = 2
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           7.794234e-013   5.144973e-021   7.794234e-013 
+	   energy             5.733083e-012   4.224864e-016   5.733083e-014 
+	   displacement       7.541736e-011   7.541736e-011   7.541736e-017 
+ *************************************************************************
+ *                               WARNING                                 *
+ *                                                                       *
+ * No force acting on the system.                                        *
+ *************************************************************************
+
+........................ augmentation # 1
+warping norm: 0.0995681 0.1
+
+convergence summary
+    number of iterations   : 1
+    number of reformations : 0
+
+------- converged at time : 1
+
+
+Data Record #1
+===========================================================================
+Step = 19
+Time = 1
+Data = ux;uy;uz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_disp_out.txt
+
+Data Record #2
+===========================================================================
+Step = 19
+Time = 1
+Data = sz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_stress_out.txt
+
+Data Record #3
+===========================================================================
+Step = 19
+Time = 1
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptemplate_out.txt
+
+Data Record #4
+===========================================================================
+Step = 19
+Time = 1
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warptarget_out.txt
+
+Data Record #5
+===========================================================================
+Step = 19
+Time = 1
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpenergy_out.txt
+
+Data Record #6
+===========================================================================
+Step = 19
+Time = 1
+Data = cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz
+File = C:\Users\skyle\OneDrive - Colostate\Documents\CSU_19\Ghosh Research\MRI_Image_Analysis\Functions\GIBBON-master\GIBBON-master\data\temp\tempModel_warpforce_out.txt
+
+
+N O N L I N E A R   I T E R A T I O N   I N F O R M A T I O N
+
+	Number of time steps completed .................... : 19
+
+	Total number of equilibrium iterations ............ : 123
+
+	Average number of equilibrium iterations .......... : 6.47368
+
+	Total number of right hand evaluations ............ : 188
+
+	Total number of stiffness reformations ............ : 123
+
+	Time in linear solver: 13:13:28
+
+
+ Elapsed time : 13:22:38
+
+ T I M I N G   I N F O R M A T I O N
+
+	Input time ...................... : 0:00:01 (1.471 sec)
+
+	Initialization time ............. : 0:00:00 (0.144 sec)
+
+	Solve time ...................... : 13:22:38 (48158.1 sec)
+
+	   IO-time (plot, dmp, data) .... : 0:00:16 (15.675 sec)
+
+	   reforming stiffness .......... : 0:00:35 (35.49 sec)
+
+	   evaluating stiffness ......... : 0:05:47 (346.76 sec)
+
+	   evaluating residual .......... : 0:01:13 (72.515 sec)
+
+	   model update ................. : 0:01:00 (60.173 sec)
+
+	   QN updates ................... : 0:00:00 (0 sec)
+
+	   time in linear solver ........ : 13:13:28 (47608.1 sec)
+
+	Total elapsed time .............. : 13:22:40 (48159.7 sec)
+
+
+ N O R M A L   T E R M I N A T I O N
+
