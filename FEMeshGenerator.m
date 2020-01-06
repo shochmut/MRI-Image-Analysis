@@ -24,15 +24,50 @@ filePath=mfilename('fullpath');
 savePath=fullfile(fileparts(fileparts(filePath)),'MRI_Image_Analysis','Functions','GIBBON-master','GIBBON-master','data','temp');
 modelName=fullfile(savePath,'tetgenmodel');
 
+%% Create Outer Surface
+% Specify dimensions of cube
+stlfileouter = 'STLGeometryOuter_14_Supine_L2L3.stl';
+[FV2] = stlread(stlfileouter);
+[F2,V2] = stlread(stlfileouter);
+
+
 %%
-% Plotting model
+% Plotting inner disc model
 cFigure; hold on;
-title('Surface model','FontSize',fontSize);
+title('Inner Disc Surface Model','FontSize',fontSize);
 gpatch(F,V,patchColor,'k',faceAlpha1);
 % patchNormPlot(F,V);
 camlight headlight;
 axisGeom(gca,fontSize); 
 drawnow;
+
+%%
+% Plotting Outer disc model
+cFigure; hold on;
+title('Outer Cube Surface Model','FontSize',fontSize);
+gpatch(F2,V2,patchColor,'k',faceAlpha1);
+% patchnormPlot(F2,V2);
+camlight headlight;
+axisGeom(gca,fontSize);
+drawnow;
+
+
+%%
+% Join geometries together
+
+[F,V,C]=joinElementSets({F,F2},{V,V2});
+
+
+%%
+% Visualize
+cFigure;
+hold on;
+gpatch(F,V,C,'k',0.5);
+colormap(gjet(2)); icolorbar;
+axisGeom;
+camlight headlight;
+drawnow;
+
 
 %%
 % DEFINE FACE BOUNDARY MARKERS

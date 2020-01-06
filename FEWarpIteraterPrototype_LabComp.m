@@ -14,7 +14,7 @@
 % Skyler Hochmuth
 % Colorado State University 
 % Walter Scott Junior College of Engineering
-function [] = FEWarpIteraterPrototype_LabComp(E_youngs,v_poisson)
+function [febio_spec] = FEWarpIteraterPrototype_LabComp(E_youngs,v_poisson)
 
 %% Plot settings
 fontSize=20;
@@ -165,12 +165,24 @@ switch formulationType
         febio_spec.Material.material{1}.density=density;
         febio_spec.Material.material{1}.E=E_youngs;
         febio_spec.Material.material{1}.v=v_poisson;
+        
+        febio_spec.Material.material{2}.ATTR.type='neo-Hookean';
+        febio_spec.Material.material{2}.ATTR.id=2;
+        febio_spec.Material.material{2}.density=2;
+        febio_spec.Material.material{2}.E=0.5;
+        febio_spec.Material.material{2}.v=0.4;
     case 'uncoupled'
         febio_spec.Material.material{1}.ATTR.type='neo-Hookean';
         febio_spec.Material.material{1}.ATTR.id=1;
         febio_spec.Material.material{1}.density=density;
         febio_spec.Material.material{1}.E=E_youngs;
         febio_spec.Material.material{1}.v=v_poisson;
+
+        febio_spec.Material.material{2}.ATTR.type='neo-Hookean';
+        febio_spec.Material.material{2}.ATTR.id=2;
+        febio_spec.Material.material{2}.density=2;
+        febio_spec.Material.material{2}.E=0.5;
+        febio_spec.Material.material{2}.v=0.4;
 end
 
 
@@ -186,6 +198,12 @@ febio_spec.Geometry.Elements{1}.ATTR.mat=1; %material index for this set
 febio_spec.Geometry.Elements{1}.ATTR.name='Nucleus_Pulposus'; %Name of the element set
 febio_spec.Geometry.Elements{1}.elem.ATTR.id=(1:1:size(E,1))'; %Element id's
 febio_spec.Geometry.Elements{1}.elem.VAL=E;
+
+%Boundary section
+febio_spec.Boundary.neo-Hookean{1}.ATTR.mat=2;
+febio_spec.Boundary.neo-Hookean{1}.fixed{1}.ATTR.bc='z';
+
+
 
 
 %% Output section 

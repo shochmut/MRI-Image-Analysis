@@ -246,81 +246,6 @@ montage(A_finalS)                                          % display all analyze
 title('Analysis Overlayed with Preprocessed Image')
 
 
-%% If segmented image touches image boundary then use watershed segmentation
-% on that disc to segment disc from the background
-% for i = 1:stacklength
-%     if x(i) == 0 & y(i) == 0
-%         figure
-%         imshow(A(:,:,i))
-%         F(i) = getframe;
-%         A_final(:,:,:,i)=F.cdata;
-%         A_finalS(:,:,:,i) = frame2im(F(i));
-%         close
-%         continue
-%     end
-%     ClearBord(:,:,i) = imclearborder(disc(:,:,i));             % if disc touches border clear
-%     true = find(ClearBord(:,:,i));                      % find images that have been cleared
-%     if isempty(true) == 1
-%         D = bwdist(~disc(:,:,i));
-%         D = -D;
-%         D(~disc(:,:,i)) = Inf;
-%         L = watershed(D);
-%         L(~disc(:,:,i)) = 0;
-%         rgb = label2rgb(L,'jet',[.5 .5 .5]);
-%         figure
-%         imshow(rgb,'InitialMagnification','fit')
-%         title('Watershed transform of D')
-%     end 
-% end
-
-
-
-
-
-%% If segmented image touches image boundary then use imopen
-% for i = 1:stacklength
-%     if x(i) == 0 & y(i) == 0
-%         figure
-%         imshow(A(:,:,i))
-%         F(i) = getframe;
-%         A_final(:,:,:,i)=F.cdata;
-%         A_finalS(:,:,:,i) = frame2im(F(i));
-%         close
-%         continue
-%     end
-%     ClearBord(:,:,i) = imclearborder(disc(:,:,i));             % if disc touches border clear
-%     true = find(ClearBord(:,:,i));                      % find images that have been cleared
-%     if isempty(true) == 1
-%         disc(:,:,i) = imopen(disc(:,:,i),strel('line',4,0));
-%         disc(:,:,i) = imclearborder(disc(:,:,i));
-%     end 
-% end
-
-
-%% If segmented image touches border and next disc touches border too, then
-% disregard that disc
-% for i = 1:stacklength
-%     if x(i) == 0 & y(i) == 0
-%         figure
-%         imshow(A(:,:,i))
-%         F(i) = getframe;
-%         A_final(:,:,:,i)=F.cdata;
-%         A_finalS(:,:,:,i) = frame2im(F(i));
-%         close
-%         continue
-%     end
-%     ClearBord(:,:,i) = imclearborder(disc(:,:,i));             % if disc touches border clear
-%     
-%     true = find(ClearBord(:,:,i));                      % find images that have been cleared
-%     true2 = find(ClearBord(:,:,(i+1)));
-%     if isempty(true) == 1 && isempty(true2)
-%         disc(:,:,i) = zeros(size(disc(:,:,i)));
-%         x(i) = 0;
-%         y(i) = 0;
-%     end     
-% end
-
-
 %% If segmented image touches border disregard all parts of segmented 
 % image boundaries that fall outside of the initial image mask dilated
 MaskInit = imclose(MaskInit,strel('disk',8));
@@ -426,6 +351,20 @@ for i = 2:stacklength
     imwrite(finaldisc(:,:,i),finalfile,'WriteMode','append','Compression','none');
 end
 
+%% Export outer cube of segmented images into a .tif file
+finalouter = A;
+finalouter = finalouter + 1;                        %add one to make sure all pixels are included
+finalouter = logical(finalouter);   
+% finalouter(disc) = 0;
+% finalouter = logical(finalouter);
+finalouter = im2uint8(finalouter);
+
+finalfile = append('FinalOuter','_',ImgStack);
+imwrite(finalouter(:,:,1),finalfile);
+for i = 2:stacklength
+    imwrite(finalouter(:,:,i),finalfile,'WriteMode','append','Compression','none');
+end
+
 %% Here we write the overlay image into a .tif file
 for i = 1:stacklength
     ImgComp(:,:,i)=im2uint8(ImgComp(:,:,i));
@@ -485,7 +424,7 @@ FEBioPath=getFEBioPath;
 E_youngs = linspace(0.1,1,5);
 v_poisson = 0.4;
 for i = 1%:length(E_youngs)
-    FEWarpIteraterPrototype_LabComp(E_youngs(i),v_poisson)
+    febio_spec=FEWarpIteraterPrototype_LabComp(E_youngs(i),v_poisson)
 end
 
 
