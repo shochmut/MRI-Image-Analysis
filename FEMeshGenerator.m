@@ -14,9 +14,9 @@ cMap=gjet(4);
 patchColor=cMap(1,:);
 markerSize=10; 
 
-
-[FV] = stlread('STLGeometry.stl');
-[F,V] = stlread('STLGeometry.stl');
+stlfile = 'STLGeometry_14_Supine_L2L3.stl';
+[FV] = stlread(stlfile);
+[F,V] = stlread(stlfile);
 
 %%
 % path names
@@ -61,7 +61,7 @@ inputStruct.Nodes=V;
 inputStruct.holePoints=V_holes;
 inputStruct.faceBoundaryMarker=faceBoundaryMarker; %Face boundary markers
 inputStruct.regionPoints=V_regions; %region points
-inputStruct.regionA=regionA;
+inputStruct.regionA=regionA*1;
 inputStruct.minRegionMarker=2; %Minimum region marker
 inputStruct.modelName=modelName;
 
@@ -81,6 +81,7 @@ E=meshOutput.elements;
 %% Visualizing mesh using |meshView|, see also |anim8|
 
 meshView(meshOutput);
+
 
 end
 
