@@ -38,6 +38,8 @@ febioLogFileName_warptemplate=[febioFebFileNamePart,'_warptemplate_out.txt']; %L
 febioLogFileName_warptarget=[febioFebFileNamePart,'_warptarget_out.txt']; %Log file name for exporting stiffness
 febioLogFileName_warpenergy=[febioFebFileNamePart,'_warpenergy_out.txt'];
 febioLogFileName_warpforce=[febioFebFileNamePart,'_warpforce_out.txt'];
+febioLogFileName_strainEnergy=[febioFebFileNamePart,'_energy_out.txt']; %Log file name for exporting strain energy density
+
 
 
 %Specifying dimensions and number of elements
@@ -96,12 +98,22 @@ meshStruct = meshOutput;
 
 
 
-%Access elements, nodes, and faces from the structure
-E=meshStruct.elements; %The elements 
-V=meshStruct.nodes; %The nodes (vertices)
-Fb=meshStruct.facesBoundary; %The boundary faces
-Cb=meshStruct.boundaryMarker; %The "colors" or labels for the boundary faces
-elementMaterialIndices=ones(size(E,1),1); %Element material indices
+
+%% Create element sets and material indices
+elementMaterialIndices=CE; %Element material indices
+elementMaterialIndices(elementMaterialIndices==-2)=1; 
+elementMaterialIndices(elementMaterialIndices==-3)=2; 
+
+%Order material sets
+E1=E(elementMaterialIndices==1,:); %Nucleus Pulposus material
+E2=E(elementMaterialIndices==2,:); %Outer material
+E=[E1;E2];
+
+% V1=V(elementMaterialIndices==1,:);
+% Fb1=Fb(elementMaterialIndices==1,:);
+% Cb1=Cb(elementMaterialIndices==1,:);
+% CE1=CE(elementMaterialIndices==1,:);
+
 
 %% 
 % Plotting model boundary surfaces and a cut view
@@ -121,6 +133,27 @@ meshView(meshStruct,optionStruct);
 axisGeom(gca,fontSize);
 
 drawnow;
+
+%% Defining boundary condition node sets
+logicRigid=ismember(Cb,[2]);
+bcSupportList=Fb(logicRigid,:);
+bcSupportList=unique(bcSupportList(:));
+
+%% Define pressure surfaces
+F_pressure=fliplr(Fb(Cb==1,:));
+
+%% Plot boundary condition nodes
+cFigure;
+xlabel('X','FontSize',fontSize); ylabel('Y','FontSize',fontSize); zlabel('Z','FontSize',fontSize)
+hold on;
+
+gpatch(Fb,V,Cb,'none',0.5);
+plotV(V(bcSupportList,:),'k.','lineWidth',2,'MarkerSize',25);
+gpatch(F_pressure,V,0.5*ones(1,3),'k');
+
+axisGeom;
+colormap(gjet(9)); 
+drawnow; 
 
 %% Defining the FEBio input structure
 % See also |febioStructTemplate| and |febioStruct2xml| and the FEBio user
@@ -157,33 +190,21 @@ febio_spec.Globals.Constants.T=0;
 febio_spec.Globals.Constants.R=0;
 febio_spec.Globals.Constants.Fc=0;
 
-%Material section
-switch formulationType
-    case 'coupled'
-        febio_spec.Material.material{1}.ATTR.type='neo-Hookean';
-        febio_spec.Material.material{1}.ATTR.id=1;
-        febio_spec.Material.material{1}.density=density;
-        febio_spec.Material.material{1}.E=E_youngs;
-        febio_spec.Material.material{1}.v=v_poisson;
-        
-        febio_spec.Material.material{2}.ATTR.type='neo-Hookean';
-        febio_spec.Material.material{2}.ATTR.id=2;
-        febio_spec.Material.material{2}.density=2;
-        febio_spec.Material.material{2}.E=0.5;
-        febio_spec.Material.material{2}.v=0.4;
-    case 'uncoupled'
-        febio_spec.Material.material{1}.ATTR.type='neo-Hookean';
-        febio_spec.Material.material{1}.ATTR.id=1;
-        febio_spec.Material.material{1}.density=density;
-        febio_spec.Material.material{1}.E=E_youngs;
-        febio_spec.Material.material{1}.v=v_poisson;
+% Material section
+% -> Material 1 Nucleus Pulposus
+febio_spec.Material.material{1}.ATTR.type='neo-Hookean';
+febio_spec.Material.material{1}.ATTR.id=1;
+febio_spec.Material.material{1}.density=density;
+febio_spec.Material.material{1}.E=E_youngs;
+febio_spec.Material.material{1}.v=v_poisson;
 
-        febio_spec.Material.material{2}.ATTR.type='neo-Hookean';
-        febio_spec.Material.material{2}.ATTR.id=2;
-        febio_spec.Material.material{2}.density=2;
-        febio_spec.Material.material{2}.E=0.5;
-        febio_spec.Material.material{2}.v=0.4;
-end
+% -> Material 2 Outer       
+febio_spec.Material.material{2}.ATTR.type='neo-Hookean';
+febio_spec.Material.material{2}.ATTR.id=2;
+febio_spec.Material.material{2}.density=2;
+febio_spec.Material.material{2}.E=20;
+febio_spec.Material.material{2}.v=0.2;
+
 
 
 %Geometry section
@@ -196,50 +217,48 @@ febio_spec.Geometry.Nodes{1}.node.VAL=V; %The nodel coordinates
 febio_spec.Geometry.Elements{1}.ATTR.type='tet4'; %Element type of this set
 febio_spec.Geometry.Elements{1}.ATTR.mat=1; %material index for this set 
 febio_spec.Geometry.Elements{1}.ATTR.name='Nucleus_Pulposus'; %Name of the element set
-febio_spec.Geometry.Elements{1}.elem.ATTR.id=(1:1:size(E,1))'; %Element id's
-febio_spec.Geometry.Elements{1}.elem.VAL=E;
+febio_spec.Geometry.Elements{1}.elem.ATTR.id=(1:1:size(E1,1))'; %Element id's
+febio_spec.Geometry.Elements{1}.elem.VAL=E1;
 
-%Boundary section
-febio_spec.Boundary.neo-Hookean{1}.ATTR.mat=2;
-febio_spec.Boundary.neo-Hookean{1}.fixed{1}.ATTR.bc='z';
+febio_spec.Geometry.Elements{2}.ATTR.type='tet4'; %Element type of this set
+febio_spec.Geometry.Elements{2}.ATTR.mat=2; %material index for this set 
+febio_spec.Geometry.Elements{2}.ATTR.name='Outer'; %Name of the element set
+febio_spec.Geometry.Elements{2}.elem.ATTR.id=((size(E1,1)+1):1:(size(E1,1)+size(E2,1)))'; %Element id's
+febio_spec.Geometry.Elements{2}.elem.VAL=E2;
 
+% -> NodeSets
+febio_spec.Geometry.NodeSet{1}.ATTR.name='bcSupportList';
+febio_spec.Geometry.NodeSet{1}.node.ATTR.id=bcSupportList(:);
+
+febio_spec.Geometry.NodeSet{2}.ATTR.name='boundcondZ';
+febio_spec.Geometry.NodeSet{2}.node.ATTR.id=(1:size(V,1))';
+
+% -> Surfaces
+febio_spec.Geometry.Surface{1}.ATTR.name='Pressure_surface';
+febio_spec.Geometry.Surface{1}.tri3.ATTR.lid=(1:size(F_pressure,1))';
+febio_spec.Geometry.Surface{1}.tri3.VAL=F_pressure;
+
+%Boundary condition section 
+% -> Fix boundary conditions
+febio_spec.Boundary.fix{1}.ATTR.bc='xy';
+febio_spec.Boundary.fix{1}.ATTR.set=febio_spec.Geometry.NodeSet{1}.ATTR.name;
+febio_spec.Boundary.fix{2}.ATTR.bc='z';
+febio_spec.Boundary.fix{2}.ATTR.set=febio_spec.Geometry.NodeSet{2}.ATTR.name;
 
 
 
 %% Output section 
 % -> log file
-% febio_spec.Output.logfile.ATTR.file=febioLogFileName;
-% febio_spec.Output.logfile.node_data{1}.ATTR.file=febioLogFileName_disp;
-% febio_spec.Output.logfile.node_data{1}.ATTR.data='ux;uy;uz';
-% febio_spec.Output.logfile.node_data{1}.ATTR.delim=',';
-% febio_spec.Output.logfile.node_data{1}.VAL=1:size(V,1);
-% 
-% febio_spec.Output.logfile.element_data{1}.ATTR.file=febioLogFileName_stress;
-% febio_spec.Output.logfile.element_data{1}.ATTR.data='sz';
-% febio_spec.Output.logfile.element_data{1}.ATTR.delim=',';
-% febio_spec.Output.logfile.element_data{1}.VAL=1:size(E,1);
-% 
-% febio_spec.Output.logfile.element_data{2}.ATTR.file=febioLogFileName_warptemplate;
-% febio_spec.Output.logfile.element_data{2}.ATTR.data='cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz';
-% febio_spec.Output.logfile.element_data{2}.ATTR.delim=',';
-% febio_spec.Output.logfile.element_data{2}.VAL=1:size(E,1);
-% 
-% febio_spec.Output.logfile.element_data{3}.ATTR.file=febioLogFileName_warptarget;
-% febio_spec.Output.logfile.element_data{3}.ATTR.data='cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz';
-% febio_spec.Output.logfile.element_data{3}.ATTR.delim=',';
-% febio_spec.Output.logfile.element_data{3}.VAL=1:size(E,1);
-% 
-% febio_spec.Output.logfile.element_data{4}.ATTR.file=febioLogFileName_warpenergy;
-% febio_spec.Output.logfile.element_data{4}.ATTR.data='cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz';
-% febio_spec.Output.logfile.element_data{4}.ATTR.delim=',';
-% febio_spec.Output.logfile.element_data{4}.VAL=1:size(E,1);
-% 
-% febio_spec.Output.logfile.element_data{5}.ATTR.file=febioLogFileName_warpforce;
-% febio_spec.Output.logfile.element_data{5}.ATTR.data='cxxxx;cxxyy;cyyyy;cxxzz;cyyzz;czzzz;cxxxy;cyyxy;czzxy;cxyxy;cxxyz;cyyyz;czzyz;cxyyz;cyzyz;cxxxz;cyyxz;czzxz;cxyxz;cyzxz;cxzxz';
-% febio_spec.Output.logfile.element_data{5}.ATTR.delim=',';
-% febio_spec.Output.logfile.element_data{5}.VAL=1:size(E,1);
+febio_spec.Output.logfile.ATTR.file=febioLogFileName;
+febio_spec.Output.logfile.node_data{1}.ATTR.file=febioLogFileName_disp;
+febio_spec.Output.logfile.node_data{1}.ATTR.data='ux;uy;uz';
+febio_spec.Output.logfile.node_data{1}.ATTR.delim=',';
+febio_spec.Output.logfile.node_data{1}.VAL=1:size(V,1);
 
-
+febio_spec.Output.logfile.element_data{1}.ATTR.file=febioLogFileName_strainEnergy;
+febio_spec.Output.logfile.element_data{1}.ATTR.data='sed';
+febio_spec.Output.logfile.element_data{1}.ATTR.delim=',';
+febio_spec.Output.logfile.element_data{1}.VAL=1:size(E,1);
 
 %% Quick viewing of the FEBio input file structure
 % The |febView| function can be used to view the xml structure in a MATLAB
@@ -265,7 +284,7 @@ febioAnalysis.run_filename=febioFebFileName; %The input file name
 febioAnalysis.run_logname=febioLogFileName; %The name for the log file
 febioAnalysis.disp_on=1; %Display information on the command window
 febioAnalysis.disp_log_on=1; %Display convergence information in the command window
-febioAnalysis.runMode='internal';%'internal';
+febioAnalysis.runMode='external';%'internal';
 febioAnalysis.t_check=0.25; %Time for checking log file (dont set too small)
 febioAnalysis.maxtpi=1e99; %Max analysis time
 febioAnalysis.maxLogCheckTime=3; %Max log file checking time
@@ -274,10 +293,12 @@ febioAnalysis.maxLogCheckTime=3; %Max log file checking time
 
 %% Import FEBio results 
 
-if runFlag==1 %i.e. a succesful run
+% if runFlag==1 %i.e. a succesful run
     
     % Importing nodal displacements from a log file
-    [~, N_disp_mat,~]=importFEBio_logfile(fullfile(savePath,febioLogFileName_disp));
+    [time_mat, N_disp_mat,~]=importFEBio_logfile(fullfile(savePath,febioLogFileName_disp));
+    time_mat=[0; time_mat(:)]; %Time
+
     
     N_disp_mat=N_disp_mat(:,2:end,:);
     sizImport=size(N_disp_mat);
@@ -288,92 +309,53 @@ if runFlag==1 %i.e. a succesful run
     DN=N_disp_mat(:,:,end);
     DN_magnitude=sqrt(sum(DN(:,3).^2,2));
     V_def=V+DN;
+    V_DEF=N_disp_mat+repmat(V,[1 1 size(N_disp_mat,3)]);
+    X_DEF=V_DEF(:,1,:);
+    Y_DEF=V_DEF(:,2,:);
+    Z_DEF=V_DEF(:,3,:);
+    
+    [F]=element2patch(E);
+
     [CF]=vertexToFaceMeasure(Fb,DN_magnitude);
+
     
-    % Importing element stress from a log file
-    [time_mat, E_stress_mat,~]=importFEBio_logfile(fullfile(savePath,febioLogFileName_stress)); 
-    time_mat=[0; time_mat(:)]; %Time
-    stress_cauchy_sim=[0; mean(squeeze(E_stress_mat(:,end,:)),1)'];
-    
-    %% Importing stiffness data
-    % Importing element stiffness tensors from a log file
-%     [~,stiffness_mat,~]=importFEBio_logfile(fullfile(savePath,febioLogFileName_stiffness)); 
-%     
-%     stiffness_mat=stiffness_mat(:,2:end,end); %Final stiffness state
-%     
-%     stiffness_mat_voigt=stiffness_mat(:,[1  2  4  11 16 7;...
-%                                          2  3  5  12 17 8;...
-%                                          4  5  6  13 18 9;...
-%                                          11 12 13 15 20 14;...
-%                                          16 17 18 20 21 19;...
-%                                          7  8  9  14 19 10]);
-%     stiffness_mat_voigt=reshape(stiffness_mat_voigt',6,6,size(stiffness_mat_voigt,1));
-%     stiffness_mat_voigt=reshape(mat2cell(stiffness_mat_voigt,6,6,...
-%         ones(size(stiffness_mat_voigt,3),1)),[size(stiffness_mat,1),1]);
-%     
-%     stiffness_mat_kelvin=stiffness_mat_voigt; 
-%     for q=1:1:numel(stiffness_mat_voigt)
-%         cVoigt=stiffness_mat_voigt{q};
-%         c=voigtUnMap(cVoigt);
-%         cKelvin=kelvinMap(c);
-%         stiffness_mat_kelvin{q}=cKelvin;
-%     end
-     
     %% 
     % Plotting the simulated results using |anim8| to visualize and animate
     % deformations 
     
     % Create basic view and store graphics handle to initiate animation
-    hf=cFigure; %Open figure  
+    hf=cFigure; hold on;
     gtitle([febioFebFileNamePart,': Press play to animate']);
-    hp=gpatch(Fb,V_def,CF,'k',1); %Add graphics object to animate
-    gpatch(Fb,V,0.5*ones(1,3),'k',0.25); %A static graphics object
+    hp1=gpatch(Fb,V_def,DN_magnitude,'k',1); %Add graphics object to animate
+%     hp2=gpatch(F_probe_plot,V_def,'kw','none',0.5); %Add graphics object to animate
+%     gpatch(Fb_all,V,0.5*ones(1,3),'none',0.25); %A static graphics object
     
     axisGeom(gca,fontSize); 
     colormap(gjet(250)); colorbar;
-    caxis([0 max(DN_magnitude)]);    
-    axis([min(V_def(:,1)) max(V_def(:,1)) min(V_def(:,2)) max(V_def(:,2)) min(V_def(:,3)) max(V_def(:,3))]); %Set axis limits statically
-    view(130,25); %Set view direction
-    camlight headlight;        
-        
+    caxis([0 max(DN_magnitude)]); caxis manual;
+    axis([min(X_DEF(:)) max(X_DEF(:)) min(Y_DEF(:)) max(Y_DEF(:)) min(Z_DEF(:)) max(Z_DEF(:))]);
+    camlight headlight;
+    view(15,8); 
+    drawnow; 
     % Set up animation features
     animStruct.Time=time_mat; %The time vector    
     for qt=1:1:size(N_disp_mat,3) %Loop over time increments        
         DN=N_disp_mat(:,:,qt); %Current displacement
         DN_magnitude=sqrt(sum(DN.^2,2)); %Current displacement magnitude
         V_def=V+DN; %Current nodal coordinates
-        [CF]=vertexToFaceMeasure(Fb,DN_magnitude); %Current color data to use
+%         [CF]=vertexToFaceMeasure(Fb_all,DN_magnitude); %Current color data to use
         
         %Set entries in animation structure
-        animStruct.Handles{qt}=[hp hp]; %Handles of objects to animate
-        animStruct.Props{qt}={'Vertices','CData'}; %Properties of objects to animate
-        animStruct.Set{qt}={V_def,CF}; %Property values for to set in order to animate
+        animStruct.Handles{qt}=[hp1 hp1]; %Handles of objects to animate
+        animStruct.Props{qt}={'Vertices','CData','Vertices'}; %Properties of objects to animate
+        animStruct.Set{qt}={V_def,DN_magnitude,V_def}; %Property values for to set in order to animate
     end        
     anim8(hf,animStruct); %Initiate animation feature    
+    caxis([0 max(DN_magnitude)]); caxis manual;
     drawnow;
-    
-    %% 
-    % Calculate the simulated applied uniaxial stretch
-    
-    DZ_set=N_disp_mat(bcPrescribeList,end,:); %Z displacements of the prescribed set
-    DZ_set=mean(DZ_set,1); %Calculate mean Z displacements across nodes
-    stretch_sim=(DZ_set(:)+sampleHeight)./sampleHeight; %Derive stretch
-        
-    %%    
-    % Visualize stress-stretch curve
-    
-    cFigure;
-    hold on;    
-    title('Uniaxial stress-stretch curve','FontSize',fontSize);
-    xlabel('\lambda Stretch [.]','FontSize',fontSize); ylabel('\sigma Cauchy stress [MPa]','FontSize',fontSize); 
-    
-    plot(stretch_sim(:),stress_cauchy_sim(:),'r-','lineWidth',lineWidth);
-    
-    view(2); axis tight;  grid on; axis square; box on; 
-    set(gca,'FontSize',fontSize);
-    drawnow;
-    
-end
+       
+       
+
 end
 
 %% 

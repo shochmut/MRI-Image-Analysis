@@ -177,24 +177,6 @@ x = x';
 y = y';
 
 
-
-
-
-
-% for i = 1:stacklength
-%     A_mask(:,:,i) = A(:,:,i);
-%     A_mask(:,:,i) = logical(MaskInit);
-%     A_region(:,:,i) = A_bilatfilt(:,:,i).*A_mask(:,:,i);
-%     A_region = A_region(:,:,i);
-%     [Max,MaxInd] = max(A_region(:));
-%     [xz(i),yz(i)] = ind2sub([size(A,1) size(A,2)],MaxInd);
-%     MaxValz(i) = Max;
-% end
-% MaxValz = MaxValz';
-% xz = xz';
-% yz = yz';
-
-
 %% Now exclude seed points that are below a threshold value
 for i = 1:stacklength
     if MaxVal(i) >= 0
@@ -421,8 +403,8 @@ fclose(fid);
 FEBioPath=getFEBioPath;
 
 %% Change the E and V values of the FEBio input file
-E_youngs = linspace(0.1,1,5);
-v_poisson = 0.4;
+E_youngs = linspace(1,1000,5);
+v_poisson = 0.125;
 for i = 1%:length(E_youngs)
     febio_spec=FEWarpIteraterPrototype_LabComp(E_youngs(i),v_poisson)
 end

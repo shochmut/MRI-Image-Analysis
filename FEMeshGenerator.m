@@ -57,6 +57,9 @@ drawnow;
 
 [F,V,C]=joinElementSets({F,F2},{V,V2});
 
+% Merge sets
+[F,V] = mergeVertices(F,V);
+
 
 %%
 % Visualize
@@ -69,34 +72,45 @@ camlight headlight;
 drawnow;
 
 
-%%
-% DEFINE FACE BOUNDARY MARKERS
-faceBoundaryMarker=ones(size(F,1),1);
+%% Find solid region mesh interior points
 
-%%
-% Define region points
-[V_regions]=getInnerPoint(F,V);
+logicRegion=ismember(C,[1]);
+[V_in_1]=getInnerPoint(F(logicRegion,:),V);
 
-%%
-% Define hole points
-V_holes=[];
+logicRegion=ismember(C,[2]);
+[V_in_2]=getInnerPoint(F(logicRegion,:),V);
 
-%% 
-% Regional mesh volume parameter
-[regionA]=tetVolMeanEst(F,V); %Volume for regular tets
+V_regions=[V_in_1;V_in_2];
+
+%% Visualize
+
+cFigure;
+xlabel('X','FontSize',fontSize); ylabel('Y','FontSize',fontSize); zlabel('Z','FontSize',fontSize)
+hold on;
+
+gpatch(F,V,C,'none',0.2);
+plotV(V_in_1,'r.','MarkerSize',25);
+plotV(V_in_2,'b.','MarkerSize',25);
+
+axisGeom; 
+colormap(gjet(9)); colorbar;
+drawnow; 
 
 
 %% 
 % CREATING THE INPUT STRUCTURE
 stringOpt='-pq1.2AaY';
+[regionA]=tetVolMeanEst(F,V); %Volume for a regular tet based on edge lengths
+volumeFactors=(regionA.*ones(size(V_regions,1),1));
+
 
 inputStruct.stringOpt=stringOpt;
 inputStruct.Faces=fliplr(F);
 inputStruct.Nodes=V;
-inputStruct.holePoints=V_holes;
-inputStruct.faceBoundaryMarker=faceBoundaryMarker; %Face boundary markers
+inputStruct.holePoints=[];
+inputStruct.faceBoundaryMarker=C; %Face boundary markers
 inputStruct.regionPoints=V_regions; %region points
-inputStruct.regionA=regionA*1;
+inputStruct.regionA=volumeFactors; %Desired volume for tets
 inputStruct.minRegionMarker=2; %Minimum region marker
 inputStruct.modelName=modelName;
 
